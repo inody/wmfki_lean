@@ -2830,7 +2830,7 @@
     "WMFKISynchronousModel.joinArrays": [],
     "WMFKIPopulationDesign.arrayInput": []
   },
-  "protected_paper_files_checked": 13,
+  "protected_paper_files_checked": null,
   "source_sha256": {
     "Lean_Code/ConditionalOrthogonality.lean": "502b155fcee03a272941b911212c169033e99b235a660f0eafa431b9430b0b2f",
     "Lean_Code/Definitions.lean": "999d8f25d2c199c4ce89179fd36b6106b6fc28b5ea510b1b907a4798704bac17",
@@ -2999,7 +2999,7 @@
     "scripts/setup.sh": "25e36d5c8a6a71d3eb15d5766289f0d034e87ae64ac2a808c05c55fc03cc7db2",
     "scripts/verify.py": "ce8d8bd8a53603aa01fa8d4583cf06211b70984c0ada120d81906814dbc5c146",
     "WMFKI_Stochastic/SOURCE_MANIFEST.json": "59b700b56769cc7bbacccc543008982fe6e432e88756a851271890c7b8d1e312",
-    "WMFKI_Stochastic/THIRD_PARTY.md": "ccd6c0b693e2d7166b544633bd966db7a32a424e15a3c5f4196f8c6122af4339",
+    "WMFKI_Stochastic/THIRD_PARTY.md": "cd743dd3e3040c7754830ca1163f61d35723a23f15d35939960458d91a24a33f",
     "WMFKI_Stochastic/LICENSE-FUKASAWA-APACHE-2.0.txt": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
   },
   "limits": [
