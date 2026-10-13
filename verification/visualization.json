@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "html_parser_passed": true,
+  "html_playwright_rendered": true,
+  "html_render_size": [
+    1440,
+    4121
+  ],
+  "mermaid_rendered_with_local_mermaid": true,
+  "mermaid_render_size": [
+    1800,
+    1501
+  ],
+  "all_relative_links_exist": true,
+  "key_declarations_audited": true,
+  "sha256": {
+    "docs/formalization-map.html": "3511f639d3c7482bc1dffadf96746700e32e4af9695fae3660891ca06168d177",
+    "docs/formalization-dependency.md": "555e220241346323fc5dff9f8ea5cbba8334274a6a1315cfef870e08e906fbf8",
+    "docs/formalization-map-en.html": "6c93497371303ea2dda13890c588f366cba658ef998b92cf5dba59afea41e270",
+    "docs/formalization-dependency-en.md": "7ea51a8fc17ef3d852f0fe2b2f6f4a0564a6875b7fc78c873778d872fce9dc22"
+  },
+  "mermaid_embedded_in_html": true,
+  "embedded_svg_id": "formalization-dependency-svg",
+  "embedded_html_playwright_rendered": true,
+  "embedded_html_render_size": [
+    1440,
+    5060
+  ],
+  "html_link_count": 25,
+  "html_unique_ids": 145,
+  "english_version_created": true,
+  "english_embedded_mermaid_rendered": true,
+  "english_html_playwright_render_size": [
+    1440,
+    5412
+  ],
+  "english_zoom_controls_tested": true,
+  "english_relative_links_exist": true,
+  "english_japanese_codepoints": 0
+}

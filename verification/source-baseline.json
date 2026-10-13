@@ -1,0 +1,18 @@
+{
+  "paper_head": "f8cd91c7f70868b548675d2d735d1fdc7d55afd3",
+  "protected_sha256": {
+    "latex/R06/metadata.tex": "dd376d3f35b5b0170a1c17a01ab80830d0949943cd23f0f5f4d5d7202b1fb00d",
+    "latex/R06/declarations.tex": "4b424162871198355a8f1af30bf7181834146e0e9c512ee9e6d6bf4bf3d60c8b",
+    "latex/R06/body.tex": "c3c6c87d916c1b3060e3e89e3de52e2a3b57ce97ef41cddf5f05aba0d4e065c5",
+    "latex/R06/macros.tex": "ca87cedcf436f99368a15c76702267873a1a2120183caa77806fbb647bf33503",
+    "latex/R06/theorems.tex": "d227ae91b537b3d1bbdd938474658d4dafb98e90e3da5dd39b14fbb56044a017",
+    "latex/R06/abstract.tex": "9168c7470816ecc0ca9ab7f3c9f7d9b88372db1ee00d0cfc8e73899957d7b96f",
+    "latex/R06/appendices.tex": "775dbc5cd09fd0f369d73097f7501fc07d9571719f6545016ef26b70dc33a224",
+    "latex/R06/main_physicad.tex": "0b5f75f4758d2472d826e8425f13088e3098e34c5dd68a02986a768ca0c96cea",
+    "latex/R06/main_arxiv.tex": "432357f56d02480f9ce298b5544fce804cbbfe5ca2b2347baaa2b6194cc47646",
+    "latex/R06/packages.tex": "8195426a06ce60ac584d760bb942d1c96a40ca84091f05d697587f423e0ce515",
+    "latex/R06/main_arxiv.pdf": "c1eaa4eec2d05883ebacc5892c91a37c7542e8535e13459978dcb745b7610e86",
+    "latex/R06/main_physicad.pdf": "876ee219a8547fde41a2d3b08feb2b19871163344231cbd8489d88f661b8ca71",
+    "latex/R06/MIGRATION_REPORT.md": "369e0c771f1c21a4fd408dba10920b90291e5351c1b2b710b91bc64cc88dae64"
+  }
+}

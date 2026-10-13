@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+export ELAN_HOME="${WMFKI_LEAN_CACHE:-$HOME/.cache/wmfki-lean}/elan"
+export PATH="$ELAN_HOME/bin:$PATH"
+export MATHLIB_CACHE_DIR="${WMFKI_LEAN_CACHE:-$HOME/.cache/wmfki-lean}/mathlib-cache"
+exec "$ELAN_HOME/bin/lake" "$@"

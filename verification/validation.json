@@ -1,0 +1,3015 @@
+{
+  "scope": "有限時間の明示的積確率モデル上で、原始初期乱数・独立Brownian入力から平均場過程と相互作用粒子系を構成し、同期第4モーメント率、実時間特徴核、母集団設計、観測・求積D0、同一実現V0を経て、productionのランダムペア既知support OLSとLASSOへ接続。公開終点はWMFKIJointAssembly.exists_particle_weak_recovery。RMS求積、識別幾何、sampling smallness、確率許容値、penalty条件は明示的仮定。",
+  "lean": "Lean (version 4.34.1, arm64-apple-darwin24.6.0, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+  "stochastic_analysis_commit": "0cb33378176178d269f53a4dada439f8ecd3bf5e",
+  "stochastic_analysis_license": "Apache-2.0",
+  "statement_lock_unchanged": true,
+  "extension_statement_lock_unchanged": true,
+  "legacy_audited_declaration_count": 126,
+  "stochastic_audited_declaration_count": 437,
+  "audited_declaration_count": 563,
+  "legacy_checked_example_count": 26,
+  "stochastic_checked_example_count": 6,
+  "checked_example_count": 32,
+  "adopted_module_count": 116,
+  "clean_project_rebuild": true,
+  "build_passed": true,
+  "project_warning_count": 0,
+  "external_dependency_warning_count": 936,
+  "project_axioms": 0,
+  "sorry_count": 0,
+  "axiom_dependencies": {
+    "WMFKI.lowerBound_perturb": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.leastSquares_orthogonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.leastSquares_prediction_sq_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.leastSquares_error_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.secondMoment_good_event": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.good_event_intersection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.oracle_recovery_of_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.Showcase.oracle_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.matrixMap_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.matrixMap_norm_le_frobenius": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.frobenius_restrict_columns": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.matrixMap_restrict_norm_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.matrixMap_sub": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.matrixMap_transpose": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.frobenius_eq_vector_norm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.matrixMap_secondMoment_transfer": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.isLeastSquares_of_orthogonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.moorePenrose_isLeastSquares": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.moorePenrose_error_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.exists_moorePenrose": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.moorePenrose_spec": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.moorePenrose_minimizes": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.partialL1_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.partialL1_decomp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.partialL1_sq_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.l1_support_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.score_inner_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.lasso_basic_inequality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.lasso_deterministic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.coneLowerBound_perturb": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.columnBound_perturb": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.score_of_column_and_residual": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.lasso_recovery_of_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.lasso_penalty_normalization": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.norm_le_l1Norm": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.lassoObjective_continuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.exists_lasso": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.lassoEstimator_minimizes": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.oracle_moorePenrose_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.lasso_estimator_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.l2_norm_sq_eq_integral": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.conditional_centered_inner_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.conditional_centered_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.weighted_independent_variance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.refreshed_sampling_variance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.integral_uniformPopulation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.finite_memLp_two": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.integral_draw_eval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.draws_independent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.centered_draw_mean": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.centered_draw_variance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_mean": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_second_moment_weighted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.populationMean_linear_combination": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_linear_combination": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_eq_sampled_sub_full": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.orderedPair_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairCorrection_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.corrected_pair_average": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairPrefactor_sq_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairRowError_mean": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairRowError_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.single_particle_no_pairs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.product_conditional_centered": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairRowError_conditional_mean": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.integrable_finite_fibers": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_observable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_observation_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_joint_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.samplingError_joint_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairRowError_joint_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairRowError_conditional_mean_of_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairRowError_joint_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairDesignError_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairDesignError_mul_coefficients": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairDesignError_direction_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairDesignError_eq_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.assembled_design_conditional_centered": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.assembled_design_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.assembled_design_direction_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairFeature_sq_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.pairFeature_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.norm_add_sq_le_twice": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.observation_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.observedPairFeature_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.observedPairFeature_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.observed_design_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.noisy_observed_design_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.observedPairFeature_realizable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.observed_direction_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.conditional_centered_second_moment_fun": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.finite_observation_pythagoras": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampledResidual_decomposition": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.fullPairDesign_entry_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.fullPairDesign_entry_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.fullResidual_entry_regular": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampledResidual_second_moment_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampledResidual_second_moment_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.observed_residual_second_moment_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.observedWeakResponse_regular": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.weak_pair_moment_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.continuous_matrixMap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.frobenius_sq_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.finite_vector_norm_sq_regular": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.frobenius_sq_regular": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.matrix_operator_moment_regular": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampledPairDesign_entry_regular": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampledResidual_eq_regression": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampledResidual_norm_sq_regular": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.matrix_observation_pythagoras": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampledDesign_second_moment_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampledDesign_operator_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampled_moorePenrose_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampled_lasso_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.frobenius_select_sq_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.full_design_selected_second_moment_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.sampled_oracle_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.radius_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.atomBound_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.kernelBound_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.position_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.regular": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.selected_direction_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.oracle_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.lasso_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "stochastic_axiom_dependencies": {
+    "WMFKIFeatureCoupling.coupled_position_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.exists_continuous_design_coupling": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.particle_real_jointly_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.weak_pair_feature_jointly_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.featureGap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.exists_feature_coupled_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.exists_observed_full_design_rate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.additive_c12_retained": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.additive_sde_equation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.arrayCopy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.ArrayNonlinearFamily": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.array_family_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.array_population_drift_integrable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.arrayMeasure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.split_arrays_preserving": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.join_arrays_preserving": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.joined_coordinate_preserving": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.initial_array_independent_drivers": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.c12_drift_retained": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.exists_independent_brownian_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.conditional_fourth_average": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.kernelFluctuation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.kernel_fluctuation_centering": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.kernel_fluctuation_fourth_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.l4_of_integrable_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.conditionally_centered_fourth_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.feature_average_configuration": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.continuous_design_bridge": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.continuousFeatureDesign": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.process_pair_average_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.continuous_design_coupling": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.offDiagonalAverage": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.continuousPairAverage": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.off_diagonal_average_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.off_diagonal_average_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.off_diagonal_average_sub": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.continuous_pair_average_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.continuous_pair_average_sub": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.exists_continuous_population_rate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleGrid": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.continuousResponseVector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.continuousKernelVector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.weak_residual_vector_response_sub_kernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.copy_average_identification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.copy_design_identification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.pairFeature": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.featureMomentFactor": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.feature_moment_factor_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.coupled_pair_feature_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.weighted_coupled_feature_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.particle_drift_full_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.particle_drift_component_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.empiricalFluctuation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.drift_gap_split": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.drift_gap_norm_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.synchronous_drift_gap_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.dependent_norm_product_l2": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.fourth_to_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.sqrt_fourth_rate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.ordered_pair_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.discrete_design_bridge": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discreteResponseVector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discreteKernelVector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.responseObservationConstant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.kernelObservationConstant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.normalized_test_vector_sub": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.observed_weak_vector_perturbations": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_response_brownian_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleProjection_single": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_fderiv_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_fderiv_coordinate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.fderiv_directional_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_hessian_diagonal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.linearMap_coordinate_sum": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particlePositions_coordinateDrift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.euclidean_laplacian_trace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_hessian_trace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_generator_particles": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_generator_pairs": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.fderiv_euclidean_coordinate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_gradient_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_gradient_energy_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empiricalNoiseIntegrand": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_noise_coordinate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_noise_pointwise_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_noise_regularity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.exists_empirical_noise_with_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empiricalWeakResidual": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_weak_residual_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.expanded_residual_identification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleProjection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empiricalObservable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empiricalObservable_contDiff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_particle_weak_balance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empiricalPairInteraction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empiricalLaplacian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.euclidean_test_derivatives_continuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_pair_laplacian_continuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.half_process_real_continuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.expanded_empirical_weak_response": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.finite_brownian_integrals_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.continuous_m2_mean_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.finite_measure_fourth_jensen": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.product_fourth_integrable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.finite_integral_fourth_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.finite_measure_second_jensen": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.product_second_integrable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.finite_integral_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.base_jointly_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.array_fluctuation_jointly_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.fluctuationTimeEnvelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.fluctuation_time_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.fluctuation_time_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.integrable_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.fourth_two_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.fourth_three_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.three_l4_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.mean_fourth_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.average_l4_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.comparison_envelope_l4": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.laplacian_bound_of_c3": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.genuineWeakAssembly": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.iidPairMatrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.populationPairMatrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.iid_pair_matrix_frobenius_rate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.offDiagonalKernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.offDiagonalKernel_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.iidPairStatistic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.iid_pair_hasLaw": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.off_diagonal_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.off_diagonal_mean": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.off_diagonal_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.off_diagonal_disjoint_covariance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.iid_pair_statistic_mean": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.iid_pair_statistic_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.iid_pair_statistic_rate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.iid_pair_statistic_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.iid_time_design_rate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.independent_family_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.brownian_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.replicated_brownian_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.independentBrownianFamilySystem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.independentBrownianFamilySystem_coordinate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.exists_brownian_family_system": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.l4_integrable_power": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.second_moment_sq_le_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.independent_centered_fourth_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.independent_centered_second_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.finite_centered_fourth_formula": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.iid_centered_kernel_fourth_formula": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.iid_centered_kernel_fourth_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.independent_gaussian_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.independent_observed_design_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.design_budget_common_constant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.independent_observed_particle_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.independent_residual_from_position": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.array_inputs_independent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.array_input_preserving": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.array_pair_preserving": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.ito_integrand_positive_common_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.three_budget_absorption": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.exists_joint_weak_budgets": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.parameter_mean_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.fourth_sub_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.centered_kernel_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.configurationKernelFunctional": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.configuration_kernel_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.configuration_kernel_realizable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.empirical_pair_kernel_realizable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discrete_kernel_functional": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discrete_kernel_realizable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discreteDictionaryDesign": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.continuousDictionaryDesign": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discrete_dictionary_realizable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.continuous_dictionary_realizable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.l4_of_integrable_norm_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.fourth_three_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.linear_growth_pair_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.lipschitz_growth_with_origin": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.lipschitz_fluctuation_uniform_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.matrix_error_composition": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.compact_brownian_forcing_adapted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.exists_adapted_brownian_mean_field": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.exists_product_adapted_mean_field": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.compactBrownianForcing": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.brownian_forcing_envelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.exists_mean_field_brownian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.exists_mean_field_of_brownian_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.measurable_of_ae_eq_complete_subsigma": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.AdaptedOn": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copyFiltration": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copy_filtration_mono": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copy_filtration_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copies_adapted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.lawDrift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.lipschitz_kernel_growth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.law_kernel_integrable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.law_drift_growth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.law_drift_coupled_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.law_drift_lipschitz": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.law_drift_map": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.law_kernel_map_integrable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.exists_weighted_input_modification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.weighted_paths_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.exists_mean_field_finite_horizon": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.exists_mean_field_additive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.FiniteL4Paths": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.finite_l4_paths_of_global_envelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.FiniteL4Paths.weighted_modification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.FiniteL4Paths.memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.FiniteL4Paths.uniform_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.FiniteL4Paths.marginal_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.FiniteL4Paths.drift_integrable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.finite_l4_mean_field_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.mean_field_equation_of_law_integral": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.MeanFieldEquation.restrict": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.FiniteL4Paths.restrict": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.finite_horizon_consistency": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copyProcess": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.finiteTrajectory": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.finite_trajectory_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copy_hasLaw": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copies_independent_paths": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copies_joint_path_law": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copies_uniform_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copies_common_equation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copies_population_equation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.copy_jointly_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.measurable_past_drift_integral": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.picard_step_adapted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.picard_iter_adapted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.picard_limit_adapted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.exists_adapted_mean_field": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picardIter": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.iterationEnvelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.iteration_envelope_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_iter_weighted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_iter_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.factorialBound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_successive_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_successive_uniform": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.factorial_bound_summable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picardLimit": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_limit_tendsto": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_limit_tail": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_limit_weighted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_limit_fixed_point": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_limit_mean_field_equation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.picard_step_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.picard_iter_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.picard_limit_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.WeightedPaths": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.weighted_paths_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.measurable_along_drift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.continuous_along_drift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.jointly_measurable_drift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.timeClip": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.time_clip_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.time_clip_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picardStep": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_step_weighted": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.picard_step_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.pullback_hasLaw": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.law_drift_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.input_weight_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.weighted_paths_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.finite_l4_paths_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.mean_field_equation_pullback": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.MeanFieldEquation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.mean_field_equation_congr": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.ae_weighted_drift_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.synchronous_difference_step": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.weighted_mean_field_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.InputWeight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.normalizedWeight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.normalized_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.weighted_section_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.weighted_drift_growth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldPicard.weighted_drift_difference": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.additive_mean_field_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.exists_unique_adapted_brownian_mean_field": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldAdapted.exists_unique_product_adapted_mean_field": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.IIDNonlinearFamily": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.iid_family_from_solution": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.brownian_copy_filtration": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIMeanFieldCopies.exists_iid_nonlinear_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.normalizedTestVector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.normalized_test_vector_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.weakResidualVector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.weak_residual_vector_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.scalar_observation_difference_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleTimeAverage": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.pairTimeAverage": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_time_average_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.pair_time_average_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.global_derivative_difference_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.observation_test_derivative_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.C3TestBounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.C3TestBounds.observation_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.constant_c3_test_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.observed_pair_feature_difference_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.independent_norm_product_l2": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.observed_pair_feature_difference_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.ObservationSamples": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.independentObservationSamples": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.rowNormalizedMatrix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.row_normalized_matrix_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.observed_dictionary_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.observed_assembly_full_pair_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_observed_full_pair_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.averaged_time_energy_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.weakResponseIntegrand": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discreteWeakResponse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discreteKernelDesign": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.scalar_combination_lipschitz": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.weak_response_integrand_lipschitz": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discrete_response_observation_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.discrete_kernel_observation_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.pairArrayAverage": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.pair_array_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.pair_array_variance_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.covariance_le_common_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.mean_square_error_eq_variance_bias": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.pairOverlapWeight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.sum_pair_overlap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIIDPairs.sum_off_diagonal_constant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.flatBrownian": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.flat_brownian_coordinate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.flat_brownian_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.exists_particle_on_arrays": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleBrownianBlock": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_brownian_envelopes": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleCoordinateDrift_continuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.diagonal_diffusion_trace": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.additiveParticleGenerator": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_c12_drift_representation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particlePositions": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleCoordinateDrift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particlePositions_sum_sq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleCoordinateDrift_sum_sq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleCoordinateDrift_lipschitz": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleDrift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.mean_norm_sq_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleDrift_lipschitz_sq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleDrift_growth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.three_l2_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.average_l2_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.comparison_envelope_l2": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.packParticles": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particlePositions_pack": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.pack_particlePositions": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.packParticles_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.packParticles_memLp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.packParticles_memLp_two_of_four": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleDrift_path_continuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_norm_comparison": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_path_comparison": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.continuous_particlePositions": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_sde_envelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particleSecondMomentBound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_solution_L2_envelopes": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_solution_uniform_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_coefficients_lipschitz": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.exists_particle_system_solution": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.particle_system_pathwise_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.exists_unique_particle_system_of_fourth_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.realParticle": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.particle_real_paths": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.particle_vector_equation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.state_pair_preserving": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.instantaneous_feature_law": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.time_pair_kernel_mean": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.populationFeatureDesign": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.population_design_identification": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.exists_particle_weak_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.three_vector_l2_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.matrix_quadrature_direction_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.quadrature_residual_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.observed_residual_error_composition": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.three_scale_budget": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.exists_initial_brownian_system": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.exists_unique_product_particle_system": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.arrayFluctuation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.UniformFluctuationFourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.array_fluctuation_uniform_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.exists_synchronous_family_with_fluctuation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.RecoveryCertificate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.selected_residual_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.recover_genuine_assembly": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.sde_drift_retained": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.two_vector_l2_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.stable_weighted_l2_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.normalized_vector_second_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.real_l2_domination": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.driftGap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.synchronous_difference_equation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.SynchronousParticlePair": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.exists_synchronous_particle_family": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.synchronousFourthConstant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.coupling_envelope_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.synchronous_fourth_rate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.exists_synchronous_fourth_rate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.couplingEnvelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.synchronous_path_envelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.tagged_copy_preserving": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.off_diagonal_succAbove": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.fluctuation_tagged_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIRealizedFluctuation.iid_fluctuation_fourth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.three_matrix_errors": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIObservedDesign.coupled_uniform_position_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.inputPairFeature": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.timePairKernel": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.input_pair_feature_measurable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.input_pair_feature_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIPopulationDesign.time_pair_kernel_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.euclidean_norm_fourth_le": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.vector_fourth_from_coordinates": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.vectorKernelFluctuation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIIndependentFourth.vector_kernel_fluctuation_fourth_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.weakPairFeature": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.featureCouplingConstant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.feature_coupling_constant_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.gradient_measurable_of_c3": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.weak_pair_feature_coupling": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.featureSecondConstant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.feature_second_constant_nonneg": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.weak_pair_feature_growth": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIFeatureCoupling.weak_pair_feature_second": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.weak_response_bridge": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIJointAssembly.full_residual_bridge": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.weighted_particle_brownian_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.fderiv_fderiv_const_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.additiveParticleGenerator_const_mul": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.weighted_particle_ito": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKIExternalProbe.weighted_particle_weak_balance": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKISynchronousModel.joinArrays": [],
+    "WMFKIPopulationDesign.arrayInput": []
+  },
+  "protected_paper_files_checked": 13,
+  "source_sha256": {
+    "Lean_Code/ConditionalOrthogonality.lean": "502b155fcee03a272941b911212c169033e99b235a660f0eafa431b9430b0b2f",
+    "Lean_Code/Definitions.lean": "999d8f25d2c199c4ce89179fd36b6106b6fc28b5ea510b1b907a4798704bac17",
+    "Lean_Code/DesignComposition.lean": "18d69bc6da4d061d7d8504069f52b91de773fa9865baf43275aa76f153f6e4c7",
+    "Lean_Code/Deterministic.lean": "8c069f22a3ceb19aeace41a55925c1ddd8c03c77495d992191a396dbd986841a",
+    "Lean_Code/EstimatorRecovery.lean": "106f40d6f9a2d444ab2386275dd5f10fa8b7e331b27a542b311f202ead06bf84",
+    "Lean_Code/FeatureMoments.lean": "9f724f17be6f05d57b30c252b11ea9d7a433bdcb05e92efb498df72504c61375",
+    "Lean_Code/FiniteSampling.lean": "efbc50f0fc96d24d8fa18606f0d372270e6e5b56b5494aa9d3276388e82fa39a",
+    "Lean_Code/Human_Check.lean": "7ba8ec75f5bdedad5137ac0bd6256ab3f7ffb1f6d53c636a49a436a57fed6c69",
+    "Lean_Code/LassoDefinitions.lean": "472a3512823f0c72134a41f5c553471dc0799b51b4277561954c063490ba781f",
+    "Lean_Code/LassoDeterministic.lean": "f618ff595ffefe87c0bb2de9c437aaaa2269d24f415fa915591c1bad01b30d5a",
+    "Lean_Code/LassoExistence.lean": "e1db2e90055ee15dbad7e2a5d7077b379d21e2832acd13b0d27f480493e7d235",
+    "Lean_Code/LassoGeometry.lean": "24f720d453ae9acd2845b6f2641d40945bb482e7fd28a2d4a9bef21e58ef7867",
+    "Lean_Code/LassoRecovery.lean": "f16165c5ba26a9a6f082386741e0c0addb2b554ed1d5492bd73a40393a7cb8a1",
+    "Lean_Code/LassoTransfer.lean": "97bd5435fb1ac8461c3323131001f44e9ad23379c0feffd8af9fcd06e175e29c",
+    "Lean_Code/Main.lean": "b62f8cb5c56c7880a5071087762d21fb0d4309ac74c08a050feac2966e2c0103",
+    "Lean_Code/MainTheorem.lean": "b1ffd055003ef7460b1f655b06c300311e312cbe055c54dea9bf8a48b5d36cb8",
+    "Lean_Code/MatrixBridge.lean": "0cd898468f833556ffc0e399e4969e47751acc0fe9292eec5b7067608af08e40",
+    "Lean_Code/MatrixMoments.lean": "be2b2406ebba3aa13a788ebbee85869a865c71fb9aa77c2411cc61a704052adb",
+    "Lean_Code/MoorePenrose.lean": "df35fab877788fb42053126d876437c955894f3720e2e43dea834e03fa611f5f",
+    "Lean_Code/MoorePenroseConstruction.lean": "87c029d1fb3d1729496416f2240ac5088f9b0ffc7d9825c6b2bed8d78db32dd2",
+    "Lean_Code/ObservationMoments.lean": "577085cec1b70fb6837c7064f4ffa3c7e3aa6a3b31b24920b913804d1907dda6",
+    "Lean_Code/ObservedFeatures.lean": "ec10211421122cab3c92217fdd78f375f4b65e7be0543a941cdfefae6647c017",
+    "Lean_Code/PairAssembly.lean": "392782aff828bc442d9da90f4fa831093ecb97b1db6cbaba5ba4c8c49c443b64",
+    "Lean_Code/PairDesignMoments.lean": "0184a650826b90f07db53335611dd98b51cb4e545191b2768a6dee59338e2552",
+    "Lean_Code/PairRecovery.lean": "47caafc249391cfc8498fe191bec1056c68ceed8d91bde18d0a9349bd0377b8a",
+    "Lean_Code/PairSampling.lean": "24aa23d99544b4a41e219b67f91fc674d8c899565739c92d8ce9a4adcd673775",
+    "Lean_Code/Probability.lean": "42a854e5bd78d7bd05b0c08c42a95b79967a714bacd50e2afb8fa7e6b8b41e86",
+    "Lean_Code/ResidualOrthogonality.lean": "94d4a81bb28f5a6972a11a14c6231e6f6f4426325794622f81fba17ad31e8ac9",
+    "Lean_Code/SampledResidual.lean": "71a628626f0bd26b72209b424705adc60b3648c8734e912887b8f5dfb7ee737d",
+    "Lean_Code/SamplingConditional.lean": "ca40c9d27ec348941adfc5dc6f3b8d936fdf7aa13a03d3e91dd1c4e2881f60b0",
+    "Lean_Code/SamplingIntegrability.lean": "5d45484cd02b287165f27bc66102af20ebfc9191e62114516eae6e3175a26da6",
+    "Lean_Code/SamplingMoments.lean": "6dd7e767dd2044ea593babdb333ab7695700290a5014e6048fe60f2c0f3cf2ae",
+    "Lean_Code/SamplingRegularity.lean": "a9a5be5c0fd272ddbd553a27d4e423b13a080ac938b370d8a31ec43762b96d42",
+    "Lean_Code/SamplingVariance.lean": "f21473b5b98124d78bff6786bc97a9c1bba5455c54a74b217cf09dd4caf7771b",
+    "Lean_Code/WeakPairMoments.lean": "6327ff45f3bb69b7a87764460cc876b749ce352249a29de8d4badd09b2c6efa4",
+    "Lean_Code/WeakPairRecovery.lean": "b4a903dbb97725fe69b5ea2510100401f2f591b1d52f5d4df0e3b79efae7820b",
+    "Showcase.lean": "c541ba1a43a90b35c461f00b29d1db803ecabac3b79344e8c9fcbcd38cfe30f1",
+    "WMFKI_Stochastic/ActualDesignCoupling.lean": "7f35f73cceda055d22b897661807efe6e3b3a9973142b6c492ff236725ea920d",
+    "WMFKI_Stochastic/ActualFeatureProcesses.lean": "fe329c1f5f30446591fb24bcc9601173c63005a95290ce16c4dc0812b9886534",
+    "WMFKI_Stochastic/ActualObservedDesign.lean": "f7c5accf45f9822127682fa323ef27873890bddb60b98de3f120c7e46cc1ba45",
+    "WMFKI_Stochastic/AdditiveItoRetained.lean": "e0a08011fa9e078524a84a79087d159a5be829cc81da6cffb0845c4e5a2bfbdf",
+    "WMFKI_Stochastic/AdditiveParticleEquation.lean": "cfc23a22cde78ab86313be7d80bcae444b1bb8e786c24976c34477957982d985",
+    "WMFKI_Stochastic/ArrayNonlinearCopies.lean": "2cb47284915ac7e2eb0a9e6496fd26976c5f57397a9f621f0adda1961f3c46e5",
+    "WMFKI_Stochastic/ArrayProductRealization.lean": "0b6016444883785152051be2f4d53f7ee6142438d8745a84c2de83f1934b4821",
+    "WMFKI_Stochastic/Audit.lean": "76bfeaa5b35d2458e14dc87130fedfdf1a773b74cb4c8204bed17868456a007d",
+    "WMFKI_Stochastic/C12ItoRetained.lean": "db46f820fc2a4a692b804755ba0c3adf8f569f1978d851bc7a0270d861b0b1ee",
+    "WMFKI_Stochastic/CanonicalBrownianFamilyProbe.lean": "97191b0b3f1b46c51e8d1d6e56fd397487fe0b7577c3950f77399d015417d006",
+    "WMFKI_Stochastic/ConditionalFluctuationFourth.lean": "32378d5ca227231c1b86c5345054026b8cd56b5530c24034168e89f3b7b0e595",
+    "WMFKI_Stochastic/ConditionalFourthSum.lean": "5c5a86db6950757e31bd943bb4d3c1399280952a5cbd6c6ea7af6a8f8591924f",
+    "WMFKI_Stochastic/ContinuousDesignBridge.lean": "5e246dee3628368a76bd3061d5cf106b96d8aa5ab2ebc2234ed505d61134351c",
+    "WMFKI_Stochastic/ContinuousFeatureDesign.lean": "70befa347374885075036b87d848d3169696a590d05a9554b593ad61fdf4d00a",
+    "WMFKI_Stochastic/ContinuousPairAverage.lean": "e2aa9865a4a3c64a33d40f45ccb0e7a444d3a223f365752633ccb90aadcd9766",
+    "WMFKI_Stochastic/ContinuousPopulationRate.lean": "eadd060eb257a034c5f229120a8efd1ca49278f2fca6e8cae7c7e60ed3260dc4",
+    "WMFKI_Stochastic/ContinuousWeakVectors.lean": "c4651625e36eca6f3a57ec43cdc9d6b411363eadf4909c60f8541ba6aa2fa55e",
+    "WMFKI_Stochastic/CopyDesignIdentification.lean": "c77509f0cd4b7b404d54783fcc9c94116f22f21ef3c131abd381e00f58e3e81b",
+    "WMFKI_Stochastic/CoupledFeatureMoments.lean": "b078a64a081fe2b91cd6e1bc08fdc9cc58e25dc3ed0bc89486ca300dda262e61",
+    "WMFKI_Stochastic/CouplingDriftSplit.lean": "b016764d868a9fee17ec3539677d08fc1d4b7e837b1f4393c30de37fa6b35bdb",
+    "WMFKI_Stochastic/DependentFourthProducts.lean": "615c0f25c3c50c605b11dcb23a70366e1bdc635e7f308318a6f423cdf988d2d0",
+    "WMFKI_Stochastic/DiscreteDesignBridge.lean": "15a63224bdfd728a519a10044a744ea1edceb9e60454d7e7cc2a3d04baad19f1",
+    "WMFKI_Stochastic/DiscreteWeakResidual.lean": "fb02f7eb982fce052254e154f28082f3822476785ddfc08dca90dbb389acb3d1",
+    "WMFKI_Stochastic/EmpiricalBrownianBalance.lean": "e72368d06442076ea6d4f9300e0ddd4760562e5aaf8a77e18fa24af3b45d99f7",
+    "WMFKI_Stochastic/EmpiricalDerivatives.lean": "f58002de88de0754940ac667eeb41e7f7b351d1a62b042ef2125dd6785d51e9c",
+    "WMFKI_Stochastic/EmpiricalGenerator.lean": "a14b862b5561d8c495de46bd8732196fbc67ccbb16be8474f34bb684564a1787",
+    "WMFKI_Stochastic/EmpiricalNoiseEnergy.lean": "774a80e374f934aebee5f27edc3152ed48b7095ca9bcc7c7b7beade578f13ac1",
+    "WMFKI_Stochastic/EmpiricalResidualEnergy.lean": "19d0fc9f82c05cd54ffce920db98722a75a36b7728ff7eba0378283171402e9f",
+    "WMFKI_Stochastic/EmpiricalWeakBalance.lean": "76f1d1898aee1bc1ccccaa54aa4176c4c960047918ad916968369c776ee91e1d",
+    "WMFKI_Stochastic/ExpandedEmpiricalBalance.lean": "c60be9b64e588ec0168930723a84741c1aa881ff2b84374481d6f5d8be4114ca",
+    "WMFKI_Stochastic/FiniteBrownianEnergy.lean": "42565e8872925dc0c94bb721b124713035be256d4382d6643bc59ed92cd32094",
+    "WMFKI_Stochastic/FiniteMeasureFourthIntegral.lean": "8af006b3feefcafbd564e8de330f2cea1e4aaca77a39a7caca58ee1727e4a179",
+    "WMFKI_Stochastic/FiniteMeasureSecondIntegral.lean": "822aed541132f6c6a3451b03b61a88ce42b5eb6918f65e3f2c563c6cb78db65b",
+    "WMFKI_Stochastic/FluctuationJointMeasurable.lean": "006baf97d66ef235c6075828e0b5c664b31eff7bd4561df6ade26d9e36fc496b",
+    "WMFKI_Stochastic/FluctuationTimeIntegral.lean": "b5a4d74c3240c7baf24bf14428ff635d9eb56ad119a234ed2f2ef4ea3230496d",
+    "WMFKI_Stochastic/FourthMomentAlgebra.lean": "6023d9787f2dd130c0d0398a283dffaf959173196caa0f9e399bb7f3bb4f953c",
+    "WMFKI_Stochastic/GenuineWeakAssembly.lean": "1f0ecd32c7b0e6f6e8dfa4881e48f23040a865837dd4bd2e182af9cf313e3519",
+    "WMFKI_Stochastic/HumanCheckJointRecovery.lean": "f76590ec231f822c98a6dbb26a13bf3d3859975427d9f7806bf050ae0bc23f8a",
+    "WMFKI_Stochastic/Human_Check.lean": "2add112db8dd95127f754532f71b755bab5788e767b745bac972e2ed341051af",
+    "WMFKI_Stochastic/IIDPairMatrix.lean": "684c55f105f9b21a5e02aa2a206246d76f47b83db1f7c728e5dba9cf6a244af5",
+    "WMFKI_Stochastic/IIDPairStatistic.lean": "3f226207a764677411d35f33ead3811dcb086239d8e8d412f7ccccd9ef037cf6",
+    "WMFKI_Stochastic/IIDTimeDesignRate.lean": "fd84812bbae011db82757ff556fa5afc1add1b8cfec3b2a03d294916a2883b30",
+    "WMFKI_Stochastic/IndependentBrownianCopies.lean": "a685770af7597db151b7171153629596c3f84e57ae62c99aa24a41f3f135a469",
+    "WMFKI_Stochastic/IndependentBrownianFamilyProbe.lean": "ba3f6c5921e9dcb0931718f006b09a33c5e3c147437fe04a9f3a17e6b290605a",
+    "WMFKI_Stochastic/IndependentFourthAlgebra.lean": "41a52a8f0c4cdd42dfd309f39560602748f36d06e70db3785b03a42a60700757",
+    "WMFKI_Stochastic/IndependentFourthSum.lean": "45c875b14bc8c42da8eee5977b8b65e98a20567768555cabcc795342216d19f8",
+    "WMFKI_Stochastic/IndependentGaussianFamilyProbe.lean": "3367440dbc77671437496e6a9e195403c567ef448db6461f3481c18dcf64a19e",
+    "WMFKI_Stochastic/IndependentObservedDesign.lean": "2b4a1e3a90b1258383fb15ac28e1ad2a77a178eb7fb020519ff9bdb0933f124d",
+    "WMFKI_Stochastic/IndependentObservedParticleBudget.lean": "c9468c1a41829e0b13292c71ef079a6a948cbd01973ded7077eb1e9c078d670c",
+    "WMFKI_Stochastic/IndependentResidualFromPosition.lean": "ed6553e04ae71ce2d29ad29dde577947ecfa34ece3bed94c7099e7e441b136a9",
+    "WMFKI_Stochastic/InputArrayLaws.lean": "caa72c52abecfabf930da1d9f7da52974c8186a9b20cb0a4a698d821ee954d51",
+    "WMFKI_Stochastic/ItoIntegrandCommonDomain.lean": "15883cde447869dc0b8fc872f14f3bebec7d86b7f57a2dddaafed9296d44fc89",
+    "WMFKI_Stochastic/JointWeakBudgets.lean": "d932fc0487afafdefd26d446a65fa89d338302837652375e0a678edcf285b9e1",
+    "WMFKI_Stochastic/KernelCenteringFourth.lean": "2c3a7e80d9bcbb050787097cb9513a2076a625223fc2174c0fded0ac0d22c00a",
+    "WMFKI_Stochastic/KernelDictionaryLinearity.lean": "79f1f9c1d33ae85da413c6ad81a894e9f9ff14fc75b27da12398386fa33b7bf3",
+    "WMFKI_Stochastic/LinearGrowthFluctuationFourth.lean": "816ebc4306b671b07694dea217c0cdf98528e5f23c006904b49fc5cca13071a9",
+    "WMFKI_Stochastic/Main.lean": "42828a5e0851727757a6a8add9fc6d3390da1427e5d87f579a6c1f3de7d326d1",
+    "WMFKI_Stochastic/MatrixErrorComposition.lean": "1a4becc00f1eef7f1bc497f828740cbbe9216d26abd0d0c3658caa9e72585ad3",
+    "WMFKI_Stochastic/MeanFieldBrownianAdapted.lean": "1867b26e4e496fca4f79dec251529681a3f42b11eee5f6e5ec7b73e98ea64827",
+    "WMFKI_Stochastic/MeanFieldBrownianExistence.lean": "d5d730ee9772c047c0be4e4f25e647eae1d5e99565f58ffc3a1661b386a62e88",
+    "WMFKI_Stochastic/MeanFieldCompletedMeasurable.lean": "f1e58a3332b01a748211e66945515cac3dd10f9de8c954fae1270dbf031ecda9",
+    "WMFKI_Stochastic/MeanFieldCopyFiltration.lean": "3a3dcedd79d0c877065755bbfef62685ef66b664058a4c9ea4325f8b76e2c10a",
+    "WMFKI_Stochastic/MeanFieldDriftGrowth.lean": "ab3eacc4d61fc19457e29de07203ac524b3d6d322ace0336cc653346b40b383c",
+    "WMFKI_Stochastic/MeanFieldFiniteHorizon.lean": "6e620960a27d7f676d26ed1014369d758a47145e27b8106809586bdd775b9e0b",
+    "WMFKI_Stochastic/MeanFieldFiniteUniqueness.lean": "bdb1ad0a4b3bf71cf30a026356539274ec20268c540d3d9ff90e512539317583",
+    "WMFKI_Stochastic/MeanFieldIndependentCopies.lean": "b6185d2955d43b32017b2b11055604c160fc65231ab0e880b7953cf6864e1c22",
+    "WMFKI_Stochastic/MeanFieldPicardAdapted.lean": "f107c83b48f47cde42eabea42cf153074665377e5083f2206a9a02090035878b",
+    "WMFKI_Stochastic/MeanFieldPicardIterates.lean": "f190965cf4047f951994100d4b781da02f4f79255a201c79185a1946cfedda8e",
+    "WMFKI_Stochastic/MeanFieldPicardLimit.lean": "586e9b23141997c67d7a33ee3c7d85c5f2e4f0e1ccb30ea8532f7afdf32978e1",
+    "WMFKI_Stochastic/MeanFieldPicardPullback.lean": "5a0e41f495c401d92047bcea1a6d72e8201a8fb216f5d503470602e125fbc65e",
+    "WMFKI_Stochastic/MeanFieldPicardStep.lean": "7e83c8b23fda5c99353de7fb12d7ac616f5a869a3a7607d95b69e7b67855aa8a",
+    "WMFKI_Stochastic/MeanFieldPullback.lean": "83081db927fb5af51fd96f0fd17664a68611b3e950af68a2550b1fda3c2ca39c",
+    "WMFKI_Stochastic/MeanFieldSynchronousUniqueness.lean": "72e3a8325f173c04748a1789ecae109e16536abf3645b0ee223ed461ce5860d0",
+    "WMFKI_Stochastic/MeanFieldWeight.lean": "9653af51cb2385b6dd9f3b01ced827eecabf09f363ae3870c8fbe073c97bc631",
+    "WMFKI_Stochastic/MeanFieldWellPosedness.lean": "8be381148ed15b716692aa9fbbb46e2282fec7a0409396f52df1f7160ebe4ea7",
+    "WMFKI_Stochastic/NonlinearCopiesFromInputs.lean": "3ff80e4b08133fe3f79f04930f4f1a1171c8b4b8a36250c16174c39aa786b16e",
+    "WMFKI_Stochastic/NormalizedWeakResidual.lean": "3e09bd7e4d2db4a7a95438be1f42ba9ad68c69f9c126df074c691c38cc26d13f",
+    "WMFKI_Stochastic/ObservationAveraging.lean": "e3a83deab1c102a0ad5e9fdf1e5c33fc11cdf970cac98dc7125e2477390089d3",
+    "WMFKI_Stochastic/ObservationDerivativeBounds.lean": "044ab2f87b107384b5bfe2caf9f8739f2232cd6b57edaa3ce9b034e7a951001d",
+    "WMFKI_Stochastic/ObservationFeaturePerturbation.lean": "35f629e1085a4b9c30fe2d3abda8e585dd6cafcf1190e2c1970cdc9f5e71bc28",
+    "WMFKI_Stochastic/ObservationSamples.lean": "dba86290e009ee47ca211414d6148b24bb349a5037c878736a0c3701d6e34dbd",
+    "WMFKI_Stochastic/ObservedDictionaryMoment.lean": "b8d9aab698e071a033a4431b352026b45919326170b2558fe940d9bcdcc3e8a5",
+    "WMFKI_Stochastic/ObservedFullPairBudget.lean": "e3659cfae4019f1600927b959b591a943a456022975b32d0dbc9d13ffa897957",
+    "WMFKI_Stochastic/ObservedWeakPerturbations.lean": "d99a1ab4423ba778127c4c885b208cb327390717c46b9ac5746e11ff95728f33",
+    "WMFKI_Stochastic/PairArrayVariance.lean": "2b33130eaf0efd96a3ea6c5390178010c3790074b8b9e4a6eb5ea27973575902",
+    "WMFKI_Stochastic/PairMomentAlgebra.lean": "15bf76af74059f3d2fcea72566422ef37c6009bb1a30cdc4374c6572bc8696e0",
+    "WMFKI_Stochastic/ParticleArrayDrivers.lean": "1cc6468b10ffd5ddc719293a8f99818b786fc6e2cb36070cc9ba02f719549360",
+    "WMFKI_Stochastic/ParticleBrownianEnvelope.lean": "ade855d54d4741b695bf62a575c4caf9b80b7f2cbb2aaddaa35078fb5f1563ae",
+    "WMFKI_Stochastic/ParticleC12Drift.lean": "dabaee8439e724d6bf7060f7e811d5f7f8d5dabd9ad3c55375e3fe9410399036",
+    "WMFKI_Stochastic/ParticleCoordinatesProbe.lean": "f6a63e905b1a3a5032dfb781425aeb2864054eacb79e5b23dad1671271daf932",
+    "WMFKI_Stochastic/ParticleDriftProbe.lean": "38069e7bb7f7d268bdcc3eb233c9d2ed74c56df8414e9ca5076a04e25c209ef3",
+    "WMFKI_Stochastic/ParticleEnvelopeMoments.lean": "6444d6c4f36f116e5aa306d3e6d4e18b95922c640fc56c6d84b5ca1b626cabb9",
+    "WMFKI_Stochastic/ParticleInitialProbe.lean": "afc33dc45875ea9d296519a5545925cdb66a47d5c3ab81e8df34a58e67cd8e65",
+    "WMFKI_Stochastic/ParticleNormComparison.lean": "8d3d11a4a0c4c1869c764cc63e6022d4a3b9a289f9110520c5af93c99dddf05f",
+    "WMFKI_Stochastic/ParticlePathComparison.lean": "262dd206d22a10f9ecaec415afb0112bad7ba04546a98d2e3d618733ce76bb00",
+    "WMFKI_Stochastic/ParticleSDEEnvelope.lean": "a7755d7851c643cd316954c9bffc6525789ef5a29dac0cfe527bc87cc058deeb",
+    "WMFKI_Stochastic/ParticleSecondMoment.lean": "fd54eb7c213851a55662b0b4049d899af9adface569b4d292f67831b21ea70e8",
+    "WMFKI_Stochastic/ParticleSystemProbe.lean": "632626e8b2f015115ecd05eed8b62ebaa4cd4a4939c30a3fd9c23632414e0206",
+    "WMFKI_Stochastic/ParticleVectorEquation.lean": "f3077e8dda8a8a403adddc120265ed3b644b4756084b08f950a9442f762e53fd",
+    "WMFKI_Stochastic/PopulationFeatureLaw.lean": "fd75ff21ff018d0ffec7e2c332cf3602a8adf5a9eed78dfbb73ff4e58923fda1",
+    "WMFKI_Stochastic/PrimitiveRecovery.lean": "b3b28b68618605e2696bfe98a068927042012fe3c88397ae7786a755e9dbbb51",
+    "WMFKI_Stochastic/QuadratureResidualBudget.lean": "0eb97e9903063eafc36c5eac54e09bd337c1b788c261227180539b9ce93609bb",
+    "WMFKI_Stochastic/RandomInitialParticleProbe.lean": "f4eb7a33fc4fc9929f6bf83401a5f9c56e635f69f683d329eff9b6c30c3035d7",
+    "WMFKI_Stochastic/RealizedFluctuationFourth.lean": "c4ebf16ca7fdf2cb02e4d7949eab1634df9ed0d6217b4e1dbe003b3cf7a25cde",
+    "WMFKI_Stochastic/RecoveryCertificate.lean": "8f66b97b0efd9c45df3f3c1ea2e11c47474cb6a567fc1d796d98e6149bf4c5da",
+    "WMFKI_Stochastic/SDEItoRetained.lean": "efdab24e510d3c0c9526967cf44efbee0919dbffea76f1c6714be8541f3df738",
+    "WMFKI_Stochastic/StableMomentAlgebra.lean": "582100dc73173ff98b0cc4643206036d2aeb10093ea0e2a404b3acf26e9733c2",
+    "WMFKI_Stochastic/SynchronousArrayEquation.lean": "75f71ee177fe7e5a59dcca120a64a5e237af2a21aab80d79fb8efb451c5586f2",
+    "WMFKI_Stochastic/SynchronousFourthRate.lean": "ce3e4e4ed78fa89a34d565ab110ce7370a6df6e3f53268f8d434163ddec7e62a",
+    "WMFKI_Stochastic/SynchronousPathEnvelope.lean": "b570c40f98abbaf4aef3fcf1ee48ef7c99ec3114a5fee3c73214b1d5d2b40260",
+    "WMFKI_Stochastic/TaggedCopyLaw.lean": "86608b873f8294fd74321b6f91b8a03f0d39c22078e22f16864056a715a977f0",
+    "WMFKI_Stochastic/ThreeMatrixErrors.lean": "1f41fba6608c261a44b9fefbabe540a8d7849951458856a5616d3d156cb29dcd",
+    "WMFKI_Stochastic/TimePairKernel.lean": "a80f91b05b76fde14ffebf4eb6b8db2ceeb21d06d7e96c30f3b9e0adba55fab2",
+    "WMFKI_Stochastic/VectorFluctuationFourth.lean": "35dafc27338de301a6ac6cb690d97b3a839e91797a782a6bebf6bfe86be07218",
+    "WMFKI_Stochastic/WeakFeatureCoupling.lean": "03ccd6a28e6375aa9d06efc529ca81c8bd0e00b04140c0d6445a2352e24c5557",
+    "WMFKI_Stochastic/WeakFeatureGrowth.lean": "528d970b7ef1deac77d8c61e4cef4225e87819e90ec3cdd6b8989d4f8131b9a3",
+    "WMFKI_Stochastic/WeakResponseBridge.lean": "64db6a07e8659de732f78085b05a1b48b493153c95c7165fc679d9f466389f22",
+    "WMFKI_Stochastic/WeightedBrownianIdentity.lean": "c95dfec7400a53168137f8d9ee37c5f42911cbd952b4590c93780b2d09c50e84",
+    "WMFKI_Stochastic/WeightedParticleIto.lean": "eb6e15210c16b3bfe8f4a2dee2a41a2614f72588c7059b889d8e42e9d890855c"
+  },
+  "configuration_sha256": {
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "dd30471317130891cdeab4ee4ccd30d6acae0daaffbbe90feae233f2e7325546",
+    "lake-manifest.json": "71a22bf346960fa8eee0e0f3ba626d0a9960249245bba67d4801c3fcb29bf4c1",
+    "statement-lock.json": "19a6ac70b37067d2266e1843297e60ac3ba398fdb0bb1ae4076d4c72aa93a158",
+    "extension-statement-lock.json": "850dd2bf09561d9151e7b92e088e015cd5496f849d77cdfedab07bb869e1808f",
+    "scripts/lake": "7763c01631613a515a2ec0c748417f8c32c38ed5b975a54f33d50f5d5a4dfec7",
+    "scripts/setup.sh": "25e36d5c8a6a71d3eb15d5766289f0d034e87ae64ac2a808c05c55fc03cc7db2",
+    "scripts/verify.py": "ce8d8bd8a53603aa01fa8d4583cf06211b70984c0ada120d81906814dbc5c146",
+    "WMFKI_Stochastic/SOURCE_MANIFEST.json": "59b700b56769cc7bbacccc543008982fe6e432e88756a851271890c7b8d1e312",
+    "WMFKI_Stochastic/THIRD_PARTY.md": "ccd6c0b693e2d7166b544633bd966db7a32a424e15a3c5f4196f8c6122af4339",
+    "WMFKI_Stochastic/LICENSE-FUKASAWA-APACHE-2.0.txt": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+  },
+  "limits": [
+    "RMS求積精度は同じ実粒子Xについての明示的仮定であり、時間正則性だけからは導出しない",
+    "母集団設計の識別可能性・restricted-cone geometry、sampling smallness、確率許容値、LASSO penalty条件は回復適用時の仮定",
+    "有向ペア抽出と粒子入力は具体的な積確率空間で形式化。任意の既存joint realizationへの普遍移送は未形式化",
+    "コピーの新粒子filtrationへの追加適合性と無限時間一様率は未形式化。ただし今回の有限時間普通積分評価には不要",
+    "選択した推定量の可測性、数値ソルバーの正当性、support回復は未形式化",
+    "Mathlib全体はソース再ビルドせず公式キャッシュを利用",
+    "stochasticAnalysisは固定commitから必要な推移的モジュールをビルド。上流linter警告は記録するが、採用した自作ソースの警告0とは区別する",
+    "独立した別環境・別研究者による再検証ではない"
+  ]
+}

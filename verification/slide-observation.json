@@ -1,0 +1,18 @@
+{
+  "scope": "今回のLean作業ではスライドを編集していない。以下は以前の32枚版の照合値との比較であり、今回の開始時点のスナップショットとの比較ではない。",
+  "result": "slides.mdとPDFで不一致を検出。変更の原因・作成者は未確認。復元や上書きは行っていない。",
+  "files": {
+    "slidev/slides.md": {
+      "historical_sha256": "38ebff6af12c85ef2856b64d96a477ba71d570f1739fb8fe09ebdc3187ac8eba",
+      "observed_sha256": "68afa5ab61acb3daf61b33c017bd916845b74934e51b9a989dc8c94c226d49b3"
+    },
+    "slidev/slides-export.pdf": {
+      "historical_sha256": "49787a5e10cb6ced3e8b0ae15d37fc8295f4f85910dcf1f0c6c609ed8249d459",
+      "observed_sha256": "de34aceeecf876110bb59aa2d7cc0ce6e1055aaa2ab325b74909d523061f002c"
+    },
+    "slidev/STYLE_GUIDE.md": {
+      "historical_sha256": "acdad9f791cc83c7a6468322a8cee60f14365c362855a6f3f3787cc6cb40f8e7",
+      "observed_sha256": "acdad9f791cc83c7a6468322a8cee60f14365c362855a6f3f3787cc6cb40f8e7"
+    }
+  }
+}
