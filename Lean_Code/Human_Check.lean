@@ -373,6 +373,7 @@ end WMFKI.HumanCheck
 #print axioms WMFKI.sampledDesign_operator_moments
 #print axioms WMFKI.sampled_moorePenrose_recovery
 #print axioms WMFKI.sampled_lasso_recovery
+#print axioms WMFKI.sampled_lasso_recovery_of_minimizer
 #print axioms WMFKI.frobenius_select_sq_le
 #print axioms WMFKI.full_design_selected_second_moment_le
 #print axioms WMFKI.sampled_oracle_recovery
@@ -384,3 +385,4 @@ end WMFKI.HumanCheck
 #print axioms WMFKI.WeakAssemblyData.selected_direction_bound
 #print axioms WMFKI.WeakAssemblyData.oracle_recovery
 #print axioms WMFKI.WeakAssemblyData.lasso_recovery
+#print axioms WMFKI.WeakAssemblyData.lasso_recovery_of_minimizer

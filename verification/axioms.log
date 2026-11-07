@@ -113,6 +113,7 @@
 'WMFKI.sampledDesign_operator_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
 'WMFKI.sampled_moorePenrose_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
 'WMFKI.sampled_lasso_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WMFKI.sampled_lasso_recovery_of_minimizer' depends on axioms: [propext, Classical.choice, Quot.sound]
 'WMFKI.frobenius_select_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'WMFKI.full_design_selected_second_moment_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'WMFKI.sampled_oracle_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -124,3 +125,4 @@
 'WMFKI.WeakAssemblyData.selected_direction_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 'WMFKI.WeakAssemblyData.oracle_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
 'WMFKI.WeakAssemblyData.lasso_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WMFKI.WeakAssemblyData.lasso_recovery_of_minimizer' depends on axioms: [propext, Classical.choice, Quot.sound]

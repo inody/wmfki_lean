@@ -1156,11 +1156,12 @@
       "source_sha256": "6db81f0dcb8bafe9f7f22a15752651e60b8c207281a0dbfc648abfe267a50270"
     },
     {
-      "adopted_sha256": "8f66b97b0efd9c45df3f3c1ea2e11c47474cb6a567fc1d796d98e6149bf4c5da",
+      "adopted_sha256": "574d08e2a5cda6669cdd0a5003e740c1d802b21a59bcc8be81ab6ca8500aed0f",
       "module": "WMFKI_Stochastic.RecoveryCertificate",
       "origin": "joint-assembly-20261009.le3l7ozf",
       "source": "joint-assembly-20261009.le3l7ozf/RecoveryCertificate.lean",
-      "source_sha256": "5a7b9d04768259676ea40537b1f880d2d76dbe8606db51ec373a3d7573fd62f9"
+      "source_sha256": "5a7b9d04768259676ea40537b1f880d2d76dbe8606db51ec373a3d7573fd62f9",
+      "local_modification": "2026-11-05: add arbitrary pointwise LASSO-minimizer recovery to RecoveryCertificate while preserving the original selected-estimator field"
     },
     {
       "adopted_sha256": "efdab24e510d3c0c9526967cf44efbee0919dbffea76f1c6714be8541f3df738",

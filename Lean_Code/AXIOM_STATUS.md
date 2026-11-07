@@ -10,7 +10,7 @@ RMS求積精度、母集団設計の識別可能性・restricted-cone geometry�
 
 **プロジェクトの一時公理0、sorry 0。**
 固定したDefinitions・Showcase・LassoDefinitionsのハッシュは各証明開始前から不変。
-検証対象は既存126宣言と新規437宣言の合計563宣言。依存は `propext, Classical.choice, Quot.sound` のみ。
+検証対象はLean回復層128宣言と確率解析層437宣言の合計565宣言。依存は `propext, Classical.choice, Quot.sound` のみ。
 例題は既存26個と新規6個の合計32個。完全な検査結果は `../verification/validation.json` を参照。
 
 ## 初期骨組みと現在の状態
@@ -131,6 +131,13 @@ RMS求積精度、母集団設計の識別可能性・restricted-cone geometry�
 - 新規437宣言と6例を監査。既存126宣言・26例と合わせて563宣言・32例。標準公理のみ、プロジェクト固有公理0、`sorry` 0。
 
 ソース由来とhashは`../WMFKI_Stochastic/SOURCE_MANIFEST.json`、外部依存とライセンスは`../WMFKI_Stochastic/THIRD_PARTY.md`に記録した。
+
+## 現行L4DCとの対応強化
+
+- `sampled_lasso_recovery_of_minimizer`と`WeakAssemblyData.lasso_recovery_of_minimizer`を追加し、点ごとにLASSO最小化条件を満たす任意の選択へ、構成済み推定量と同じcone・定数144の評価を適用した。
+- `RecoveryCertificate.lasso_any`を追加し、原始粒子入力からの公開終点がこの任意最小化解版も返すようにした。推定量選択の可測性は要求せず、可測なdesign/residual良事象上で点ごとに結論する。
+- `l4dc-statement-lock.json`と`verify.py --check-l4dc`を追加し、現行L4DCの標本LASSO定義、誤差スケール、主回復定理、pair-sampling仮定を環境単位で照合する。
+- Lean回復層は126宣言から128宣言となり、確率解析層437宣言と合わせて565宣言を監査する。
 
 ## 採用前に残っていた接続課題（履歴）
 

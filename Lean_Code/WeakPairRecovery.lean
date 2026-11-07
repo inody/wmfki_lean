@@ -168,5 +168,34 @@ theorem lasso_recovery [IsProbabilityMeasure μ] (d : WeakAssemblyData (F := F) 
     hD hV hCA (d.selected_direction_bound id θ κ hκ hκm KT hKT hκb)
     hγ hR hδ hε hprob hlam hsupp hA hcol hsmall hpen
 
+/-- 加法観測と弱形式の有限和から、任意のLASSO最小化解へ回復評価を適用する。 -/
+theorem lasso_recovery_of_minimizer [IsProbabilityMeasure μ]
+    (d : WeakAssemblyData (F := F) μ N T L M)
+    {P : ℕ} [Fact (2 ≤ N)] (hP : 0 < P) (hL : 0 < L)
+    (A : Matrix (Fin L) (Fin M) ℝ) (S : Finset (Fin M)) (θ : Fin M → ℝ)
+    (θhat : Ω × ((Fin T × Fin P) → OrderedPair N) → Coeff M)
+    (κ : F → F) (hκ : ∀ z, ∑ m, θ m • d.Φ m z = κ z)
+    (hκm : Continuous κ) (KT : ℝ) (hKT : 0 ≤ KT) (hκb : ∀ z, ‖κ z‖ ≤ KT * (1 + ‖z‖))
+    (D0 V0 γ R δ ε lam : ℝ)
+    (hD : (∫ y, frobenius (fullPairDesign d.features d.w y - A) ^ 2 ∂μ) ≤ D0)
+    (hV : (∫ y, ‖fullRegressionResidual d.features d.w d.response θ y‖ ^ 2 ∂μ) ≤ V0)
+    (hγ : 0 < γ) (hR : 0 ≤ R) (hδ : 0 < δ) (hε : 0 < ε) (hprob : δ + ε < 1)
+    (hlam : 0 < lam) (hsupp : ∀ i ∉ S, θ i = 0)
+    (hA : ConeLowerBound (matrixMap A) S γ) (hcol : ColumnBound (matrixMap A) R)
+    (hsmall : designSamplingBudget M P d.w D0 d.atomBound ≤ δ * γ ^ 2 / 4)
+    (hpen : 2 * (R + γ / 2) * Real.sqrt (residualSamplingBudget P d.w V0 (d.kernelBound KT) / ε) ≤ lam)
+    (hfit : ∀ z, IsLasso (matrixMap (sampledPairDesign d.features d.w z))
+      (WithLp.toLp 2 (d.response z.1)) lam (θhat z)) :
+    ∃ G : Set (Ω × ((Fin T × Fin P) → OrderedPair N)), MeasurableSet G ∧
+      1 - δ - ε ≤ (μ.prod (independentDraws (Fin T × Fin P) (OrderedPair N))).real G ∧
+      ∀ z ∈ G, SparseCone S (θhat z - WithLp.toLp 2 θ) ∧
+        ‖θhat z - WithLp.toLp 2 θ‖ ^ 2 ≤
+          144 * (S.card : ℝ) * lam ^ 2 / γ ^ 4 := by
+  obtain ⟨hm, hh, hbm, hb, hCA⟩ := d.regular
+  exact sampled_lasso_recovery_of_minimizer hP hL μ d.features d.w d.response θ A S θhat hm hh hbm hb
+    D0 V0 d.atomBound (d.kernelBound KT) γ R δ ε lam d.atomBound_nonneg (d.kernelBound_nonneg KT)
+    hD hV hCA (d.selected_direction_bound id θ κ hκ hκm KT hKT hκb)
+    hγ hR hδ hε hprob hlam hsupp hA hcol hsmall hpen hfit
+
 end WeakAssemblyData
 end WMFKI

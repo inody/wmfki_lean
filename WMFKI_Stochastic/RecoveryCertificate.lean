@@ -25,6 +25,19 @@ structure RecoveryCertificate {Ω F : Type*} [MeasurableSpace Ω]
       ∀ z ∈ G, SparseCone S (lassoEstimator (matrixMap (sampledPairDesign h w z)) (WithLp.toLp 2 (b z.1)) lam hlam-θ) ∧
         ‖lassoEstimator (matrixMap (sampledPairDesign h w z)) (WithLp.toLp 2 (b z.1)) lam hlam-θ‖^2 ≤
           144*(S.card : ℝ)*lam^2/γ^4
+  lasso_any : ∀ (np : ℕ), 0 < np → ∀ (hN : 2 ≤ N),
+    letI : Fact (2 ≤ N) := ⟨hN⟩
+    ∀ (S : Finset (Fin nc)) (γ R δ ε lam : ℝ),
+    0 < γ → 0 ≤ R → 0 < δ → 0 < ε → δ+ε < 1 → ∀ (_hlam : 0 < lam),
+    (∀ i ∉ S, θ i = 0) → ConeLowerBound (matrixMap A) S γ → ColumnBound (matrixMap A) R →
+    designSamplingBudget nc np w D0 CA ≤ δ*γ^2/4 →
+    2*(R+γ/2)*Real.sqrt (residualSamplingBudget np w V0 CK/ε) ≤ lam →
+    ∀ (θhat : Ω × ((Fin nt × Fin np) → OrderedPair N) → Coeff nc),
+    (∀ z, IsLasso (matrixMap (sampledPairDesign h w z)) (WithLp.toLp 2 (b z.1)) lam (θhat z)) →
+    ∃ G : Set (Ω × ((Fin nt × Fin np) → OrderedPair N)), MeasurableSet G ∧
+      1-δ-ε ≤ (μ.prod (independentDraws (Fin nt × Fin np) (OrderedPair N))).real G ∧
+      ∀ z ∈ G, SparseCone S (θhat z-θ) ∧
+        ‖θhat z-θ‖^2 ≤ 144*(S.card : ℝ)*lam^2/γ^4
   oracle : ∀ (np s : ℕ), 0 < np → ∀ (hN : 2 ≤ N),
     letI : Fact (2 ≤ N) := ⟨hN⟩
     ∀ (sel : Fin s → Fin nc), Function.Injective sel →
@@ -93,6 +106,12 @@ theorem recover_genuine_assembly {Ω : Type*} [MeasurableSpace Ω]
     intro S γ Rcol δ ε lam hγ hRc hδ hε hprob hlam hsupp hA hcol hsmall hpen
     exact data.lasso_recovery hnp hnr A S θ K hReal hK KT hKT hKg
       D0 V0 γ Rcol δ ε lam hD hV hγ hRc hδ hε hprob hlam hsupp hA hcol hsmall hpen
+  · intro np hnp hN
+    let : Fact (2 ≤ N) := ⟨hN⟩
+    dsimp only
+    intro S γ Rcol δ ε lam hγ hRc hδ hε hprob hlam hsupp hA hcol hsmall hpen θhat hfit
+    exact data.lasso_recovery_of_minimizer hnp hnr A S θ θhat K hReal hK KT hKT hKg
+      D0 V0 γ Rcol δ ε lam hD hV hγ hRc hδ hε hprob hlam hsupp hA hcol hsmall hpen hfit
   · intro np s hnp hN
     let : Fact (2 ≤ N) := ⟨hN⟩
     dsimp only

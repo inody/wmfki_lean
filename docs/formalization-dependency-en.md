@@ -82,7 +82,7 @@ flowchart TB
 
   subgraph R[7. Random-pair recovery]
     R0["WeakAssemblyData.oracle_recovery"]:::bridge
-    R1["WeakAssemblyData.lasso_recovery"]:::bridge
+    R1["WeakAssemblyData.lasso_recovery\n/ lasso_recovery_of_minimizer"]:::bridge
     R2["recover_genuine_assembly"]:::bridge
     R3["RecoveryCertificate"]:::result
     R4["exists_particle_weak_recovery"]:::result
@@ -203,7 +203,7 @@ primitive inputs
   → D₀ bound ∧ V₀ bound ∧ RecoveryCertificate
 ```
 
-Thus, `CA` and `CV` are not chosen separately for each `N`. The theorem also does not take `D₀`, `V₀`, or the unknown trajectories as primitive assumptions.
+Thus, `CA` and `CV` are not chosen separately for each `N`. The theorem also does not take `D₀`, `V₀`, or the unknown trajectories as primitive assumptions. Its `RecoveryCertificate.lasso_any` field applies the same event and coefficient bound to any pointwise choice satisfying the LASSO minimization condition, without requiring measurability of that choice.
 
 ## Explicit assumptions and scope boundaries
 

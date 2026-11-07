@@ -6,14 +6,14 @@
   "stochastic_analysis_license": "Apache-2.0",
   "statement_lock_unchanged": true,
   "extension_statement_lock_unchanged": true,
-  "legacy_audited_declaration_count": 126,
+  "legacy_audited_declaration_count": 128,
   "stochastic_audited_declaration_count": 437,
-  "audited_declaration_count": 563,
+  "audited_declaration_count": 565,
   "legacy_checked_example_count": 26,
   "stochastic_checked_example_count": 6,
   "checked_example_count": 32,
   "adopted_module_count": 116,
-  "clean_project_rebuild": true,
+  "clean_project_rebuild": false,
   "build_passed": true,
   "project_warning_count": 0,
   "external_dependency_warning_count": 936,
@@ -595,6 +595,11 @@
       "Quot.sound",
       "propext"
     ],
+    "WMFKI.sampled_lasso_recovery_of_minimizer": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
     "WMFKI.frobenius_select_sq_le": [
       "Classical.choice",
       "Quot.sound",
@@ -646,6 +651,11 @@
       "propext"
     ],
     "WMFKI.WeakAssemblyData.lasso_recovery": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "WMFKI.WeakAssemblyData.lasso_recovery_of_minimizer": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -2831,6 +2841,7 @@
     "WMFKIPopulationDesign.arrayInput": []
   },
   "protected_paper_files_checked": null,
+  "protected_l4dc_statements_checked": null,
   "source_sha256": {
     "Lean_Code/ConditionalOrthogonality.lean": "502b155fcee03a272941b911212c169033e99b235a660f0eafa431b9430b0b2f",
     "Lean_Code/Definitions.lean": "999d8f25d2c199c4ce89179fd36b6106b6fc28b5ea510b1b907a4798704bac17",
@@ -2839,7 +2850,7 @@
     "Lean_Code/EstimatorRecovery.lean": "106f40d6f9a2d444ab2386275dd5f10fa8b7e331b27a542b311f202ead06bf84",
     "Lean_Code/FeatureMoments.lean": "9f724f17be6f05d57b30c252b11ea9d7a433bdcb05e92efb498df72504c61375",
     "Lean_Code/FiniteSampling.lean": "efbc50f0fc96d24d8fa18606f0d372270e6e5b56b5494aa9d3276388e82fa39a",
-    "Lean_Code/Human_Check.lean": "7ba8ec75f5bdedad5137ac0bd6256ab3f7ffb1f6d53c636a49a436a57fed6c69",
+    "Lean_Code/Human_Check.lean": "3e9ad5890d34694853c56bde42b9e2b4f8b681b1d8a8e1df18449b883866274d",
     "Lean_Code/LassoDefinitions.lean": "472a3512823f0c72134a41f5c553471dc0799b51b4277561954c063490ba781f",
     "Lean_Code/LassoDeterministic.lean": "f618ff595ffefe87c0bb2de9c437aaaa2269d24f415fa915591c1bad01b30d5a",
     "Lean_Code/LassoExistence.lean": "e1db2e90055ee15dbad7e2a5d7077b379d21e2832acd13b0d27f480493e7d235",
@@ -2856,7 +2867,7 @@
     "Lean_Code/ObservedFeatures.lean": "ec10211421122cab3c92217fdd78f375f4b65e7be0543a941cdfefae6647c017",
     "Lean_Code/PairAssembly.lean": "392782aff828bc442d9da90f4fa831093ecb97b1db6cbaba5ba4c8c49c443b64",
     "Lean_Code/PairDesignMoments.lean": "0184a650826b90f07db53335611dd98b51cb4e545191b2768a6dee59338e2552",
-    "Lean_Code/PairRecovery.lean": "47caafc249391cfc8498fe191bec1056c68ceed8d91bde18d0a9349bd0377b8a",
+    "Lean_Code/PairRecovery.lean": "8fd90bfb72c87f4a84a16907438e2e5579841ef4ff9b432b7c47de9e98f6621b",
     "Lean_Code/PairSampling.lean": "24aa23d99544b4a41e219b67f91fc674d8c899565739c92d8ce9a4adcd673775",
     "Lean_Code/Probability.lean": "42a854e5bd78d7bd05b0c08c42a95b79967a714bacd50e2afb8fa7e6b8b41e86",
     "Lean_Code/ResidualOrthogonality.lean": "94d4a81bb28f5a6972a11a14c6231e6f6f4426325794622f81fba17ad31e8ac9",
@@ -2867,7 +2878,7 @@
     "Lean_Code/SamplingRegularity.lean": "a9a5be5c0fd272ddbd553a27d4e423b13a080ac938b370d8a31ec43762b96d42",
     "Lean_Code/SamplingVariance.lean": "f21473b5b98124d78bff6786bc97a9c1bba5455c54a74b217cf09dd4caf7771b",
     "Lean_Code/WeakPairMoments.lean": "6327ff45f3bb69b7a87764460cc876b749ce352249a29de8d4badd09b2c6efa4",
-    "Lean_Code/WeakPairRecovery.lean": "b4a903dbb97725fe69b5ea2510100401f2f591b1d52f5d4df0e3b79efae7820b",
+    "Lean_Code/WeakPairRecovery.lean": "b1a1014918047de8e01f9ed33a5badc319738b41216dac0567a88ba6039113bb",
     "Showcase.lean": "c541ba1a43a90b35c461f00b29d1db803ecabac3b79344e8c9fcbcd38cfe30f1",
     "WMFKI_Stochastic/ActualDesignCoupling.lean": "7f35f73cceda055d22b897661807efe6e3b3a9973142b6c492ff236725ea920d",
     "WMFKI_Stochastic/ActualFeatureProcesses.lean": "fe329c1f5f30446591fb24bcc9601173c63005a95290ce16c4dc0812b9886534",
@@ -2973,7 +2984,7 @@
     "WMFKI_Stochastic/QuadratureResidualBudget.lean": "0eb97e9903063eafc36c5eac54e09bd337c1b788c261227180539b9ce93609bb",
     "WMFKI_Stochastic/RandomInitialParticleProbe.lean": "f4eb7a33fc4fc9929f6bf83401a5f9c56e635f69f683d329eff9b6c30c3035d7",
     "WMFKI_Stochastic/RealizedFluctuationFourth.lean": "c4ebf16ca7fdf2cb02e4d7949eab1634df9ed0d6217b4e1dbe003b3cf7a25cde",
-    "WMFKI_Stochastic/RecoveryCertificate.lean": "8f66b97b0efd9c45df3f3c1ea2e11c47474cb6a567fc1d796d98e6149bf4c5da",
+    "WMFKI_Stochastic/RecoveryCertificate.lean": "574d08e2a5cda6669cdd0a5003e740c1d802b21a59bcc8be81ab6ca8500aed0f",
     "WMFKI_Stochastic/SDEItoRetained.lean": "efdab24e510d3c0c9526967cf44efbee0919dbffea76f1c6714be8541f3df738",
     "WMFKI_Stochastic/StableMomentAlgebra.lean": "582100dc73173ff98b0cc4643206036d2aeb10093ea0e2a404b3acf26e9733c2",
     "WMFKI_Stochastic/SynchronousArrayEquation.lean": "75f71ee177fe7e5a59dcca120a64a5e237af2a21aab80d79fb8efb451c5586f2",
@@ -2995,10 +3006,11 @@
     "lake-manifest.json": "71a22bf346960fa8eee0e0f3ba626d0a9960249245bba67d4801c3fcb29bf4c1",
     "statement-lock.json": "19a6ac70b37067d2266e1843297e60ac3ba398fdb0bb1ae4076d4c72aa93a158",
     "extension-statement-lock.json": "850dd2bf09561d9151e7b92e088e015cd5496f849d77cdfedab07bb869e1808f",
+    "l4dc-statement-lock.json": "dc7914c3a146f025aa2a8a1d42bfdd2944c9d1807cfc31af0853a99305a4ee5c",
     "scripts/lake": "7763c01631613a515a2ec0c748417f8c32c38ed5b975a54f33d50f5d5a4dfec7",
     "scripts/setup.sh": "25e36d5c8a6a71d3eb15d5766289f0d034e87ae64ac2a808c05c55fc03cc7db2",
-    "scripts/verify.py": "ce8d8bd8a53603aa01fa8d4583cf06211b70984c0ada120d81906814dbc5c146",
-    "WMFKI_Stochastic/SOURCE_MANIFEST.json": "59b700b56769cc7bbacccc543008982fe6e432e88756a851271890c7b8d1e312",
+    "scripts/verify.py": "38efb727a9a2b722c057e31c7b7e62043fb83809fc43380423256394b6ecf959",
+    "WMFKI_Stochastic/SOURCE_MANIFEST.json": "3c7fab1856d054474fc7daf8d47cdd7b6c9c35c8a801de03de02bd33586bdc80",
     "WMFKI_Stochastic/THIRD_PARTY.md": "cd743dd3e3040c7754830ca1163f61d35723a23f15d35939960458d91a24a33f",
     "WMFKI_Stochastic/LICENSE-FUKASAWA-APACHE-2.0.txt": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
   },

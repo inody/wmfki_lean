@@ -77,8 +77,8 @@ D=CA(1/N+Δt^(2p)+σobs²)+CpairA Q/P、Q=Σw_n²。
   → V = V0 + C_K Q/P
 
 production fullPairDesign / observedWeakResponse / fullRegressionResidualとの同定
-  → WeakAssemblyData.oracle_recovery / lasso_recovery
-  → 既知support OLS定数4、LASSO定数144（代入時576）
+  → WeakAssemblyData.oracle_recovery / lasso_recovery / lasso_recovery_of_minimizer
+  → 既知support OLS定数4、構成した解および任意のLASSO最小化解に対する定数144（代入時576）
 ```
 
 OLSの下界は既知supportの選択列だけに要求する。全辞書列のinjectivityへ強めない。D0はFrobenius二乗平均であり、作用素ノルム上界から逆向きに導かない。

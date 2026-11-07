@@ -13,10 +13,12 @@ inputs, the formalization constructs the mean-field and interacting particle
 systems, proves the design and residual moment bounds, and connects them to
 oracle OLS and LASSO coefficient-recovery certificates. Quadrature accuracy,
 identifiability, sampling-smallness, probability-tolerance, and LASSO-penalty
-conditions remain explicit assumptions. The result concerns coefficient
-recovery, not support recovery.
+conditions remain explicit assumptions. The recovery certificate covers both
+the constructed LASSO estimator and any pointwise choice satisfying the same
+LASSO minimization condition. The result concerns coefficient recovery, not
+support recovery.
 
-The audited project contains 563 declarations and 32 examples, with no
+The audited project contains 565 declarations and 32 examples, with no
 project-specific axioms and no `sorry`. Its permitted transitive dependencies
 are Lean's standard `propext`, `Classical.choice`, and `Quot.sound`. For a clean
 verification run:
@@ -59,10 +61,10 @@ V0 ≤ CV (σ²/N + e + q)
 
 実装は二つのライブラリに分かれます。
 
-- `Lean_Code/`：行列、抽出、OLS/LASSOおよび回復API。既存126宣言・26例。
+- `Lean_Code/`：行列、抽出、OLS/LASSOおよび回復API。128宣言・26例。
 - `WMFKI_Stochastic/`：粒子SDEから上記APIまでの接続。新規437宣言・6例。
 
-合計563宣言について推移的な公理依存を監査し、32例を再検証します。プロジェクト固有公理0、`sorry` 0です。
+合計565宣言について推移的な公理依存を監査し、32例を再検証します。プロジェクト固有公理0、`sorry` 0です。
 
 まず全体像をつかむには、次の可視化を参照してください。
 
@@ -129,7 +131,7 @@ D = D0 + M C_A Q/P,  V = V0 + C_K Q/P
 ```
 
 `WMFKIJointAssembly.exists_particle_weak_recovery`が原始入力側の入口です。
-`WMFKI.WeakAssemblyData.oracle_recovery`と`lasso_recovery`が回復側の既存APIです。
+`WMFKI.WeakAssemblyData.oracle_recovery`と`lasso_recovery`が回復側の既存APIです。`lasso_recovery_of_minimizer`と`RecoveryCertificate.lasso_any`は、構成済みの一つの解だけでなく、点ごとにLASSO最小化条件を満たす任意の選択へ同じ回復評価を適用します。
 D0は**Frobenius二乗平均上界**として実際に導きます。作用素ノルム上界からFrobenius上界を逆向きに推論していません。
 
 ### 回復評価の意味
@@ -166,7 +168,7 @@ LASSOは、同様の二乗平均条件に加え、真のsupportを含むS、cone
 
 - 初期OLS骨組みの一時公理は5→4→1→0個。今回追加した行列・LASSOの仮置き宣言も全て証明へ置換済み。
 - 現在は**プロジェクトの一時公理0、sorry 0**。
-- 既存126宣言と新規437宣言、合計**563宣言**の推移的な依存は、Leanの標準公理 `propext`、`Classical.choice`、`Quot.sound` のみ。
+- Lean回復層128宣言と確率解析層437宣言、合計**565宣言**の推移的な依存は、Leanの標準公理 `propext`、`Classical.choice`、`Quot.sound` のみ。
 - 既存26例と新規6例、合計32例を検査。新規例では、本物の三階Frechet微分、compact bump、偏りと完全依存を持つ観測雑音、非零選択support残差、原始Brownian終点を確認。
 - OLSの定義・Showcaseと、追加したLASSO仕様は証明開始時のハッシュから不変。
 
@@ -189,6 +191,14 @@ python3 scripts/verify.py --clean
 ```bash
 python3 scripts/verify.py --clean --check-paper
 ```
+
+現行L4DC主定理、標本LASSO定義、誤差スケール、pair-sampling仮定のstatement lockを照合する場合は、論文リポジトリ内の配置で次を実行します。
+
+```bash
+python3 scripts/verify.py --clean --check-l4dc
+```
+
+`--check-paper`は履歴上のR06保護ハッシュ、`--check-l4dc`は現行L4DCの抽出済みstatement環境を検査します。
 
 - Lean **4.34.1**、Mathlib **v4.34.1**、commit `d13f23b723b8a846827a245b89c10fc7d3f11612`。
 - 確率解析基盤 `stochasticAnalysis` はcommit `0cb33378176178d269f53a4dada439f8ecd3bf5e`、Apache-2.0で固定。
@@ -231,11 +241,12 @@ Mathlibは公式のコンパイル済みキャッシュを使用しています�
 - `Lean_Code/Human_Check.lean`：例題と公理監査。
 - `Lean_Code/AXIOM_STATUS.md`：証明台帳。
 - `WMFKI_Stochastic/PrimitiveRecovery.lean`：原始粒子入力から回復証明書を返す公開終点。
-- `WMFKI_Stochastic/RecoveryCertificate.lean`：既知support OLS・LASSOの明示的な適用条件と結論。
+- `WMFKI_Stochastic/RecoveryCertificate.lean`：既知support OLSと、構成した解および任意のLASSO最小化解に対する明示的な適用条件と結論。
 - `WMFKI_Stochastic/HumanCheckJointRecovery.lean`：新規6例。
 - `WMFKI_Stochastic/Audit.lean`：採用した437宣言の公理監査。
 - `WMFKI_Stochastic/SOURCE_MANIFEST.json`、`THIRD_PARTY.md`：ソース由来・hash・外部依存・ライセンス。
-- `statement-lock.json`、`extension-statement-lock.json`：固定仕様のハッシュ。
+- `statement-lock.json`、`extension-statement-lock.json`：Lean固定仕様のハッシュ。
+- `l4dc-statement-lock.json`：現行L4DC主定理と直接の標本回帰前提を環境単位で固定するハッシュ。
 - `verification/validation.json`、`build.log`、`axioms.log`：再検証結果。
 
 公開用の `docs/` には形式化マップと依存関係資料のみを収録します。原稿本体、入力資料、ビルドキャッシュはこのリポジトリに含めません。

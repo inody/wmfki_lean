@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "scope": "active L4DC recovery theorem and direct sampled-pair prerequisites",
+  "statements": [
+    {
+      "path": "../L4DC/body.tex",
+      "environment": "equation",
+      "label": "eq:def-random-pair-LASSO",
+      "sha256": "6692099200d662c45cc6544184a48c33211975260596299586cecc0c51327fcb"
+    },
+    {
+      "path": "../L4DC/body.tex",
+      "environment": "align",
+      "label": "eq:main-residual-scale",
+      "sha256": "960271b2187aa7a132fde4a25f19f0e72898444b8c7bfd57e472ec481c3cf705"
+    },
+    {
+      "path": "../L4DC/body.tex",
+      "environment": "theorem",
+      "label": "thm:random-pair-recovery",
+      "sha256": "f9b8c64fe76ae9fbb55fa423e3883153f9e1d1c465fdc5eabd440674b0ef84c5"
+    },
+    {
+      "path": "../L4DC/appendix_theory.tex",
+      "environment": "assumption",
+      "label": "ass:random-pair-sampling",
+      "sha256": "fa2d86294847dc58d0a054ab4f8758cff5c5e7e8dc80f973c76fc7e296707bf0"
+    }
+  ]
+}

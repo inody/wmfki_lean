@@ -86,6 +86,49 @@ theorem sampled_lasso_recovery {Ω : Type*} [MeasurableSpace Ω]
     γ R δ ε (designSamplingBudget M P w D0 CA) (residualSamplingBudget P w V0 CK) lam
     hγ hR hδ hε hprob hv hlam hsupp hA hcol hdes.1 hres.1 hdes.2.1 hres.2 hdes.2.2 hrv hsmall hpen
 
+/-- 生の標本行列に対する任意のLASSO最小化解へ同じ回復評価を適用する。 -/
+theorem sampled_lasso_recovery_of_minimizer {Ω : Type*} [MeasurableSpace Ω]
+    {L M T P N : ℕ} [Fact (2 ≤ N)] (hP : 0 < P) (hL : 0 < L)
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    (h : Ω → Fin L → Fin M → Fin T → OrderedPair N → ℝ)
+    (w : Fin T → ℝ) (b : Ω → Fin L → ℝ) (θ : Fin M → ℝ)
+    (A : Matrix (Fin L) (Fin M) ℝ) (S : Finset (Fin M))
+    (θhat : Ω × ((Fin T × Fin P) → OrderedPair N) → Coeff M)
+    (hm : ∀ a m t p, Measurable (fun y => h y a m t p))
+    (hh : ∀ a m t p, MemLp (fun y => h y a m t p) 2 μ)
+    (hbm : ∀ a, Measurable (fun y => b y a)) (hb : ∀ a, MemLp (fun y => b y a) 2 μ)
+    (D0 V0 CA CK γ R δ ε lam : ℝ) (hCA0 : 0 ≤ CA) (hCK0 : 0 ≤ CK)
+    (hD : (∫ y, frobenius (fullPairDesign h w y - A) ^ 2 ∂μ) ≤ D0)
+    (hV : (∫ y, ‖fullRegressionResidual h w b θ y‖ ^ 2 ∂μ) ≤ V0)
+    (hCA : ∀ a m t p, (∫ y, h y a m t p ^ 2 ∂μ) ≤ CA)
+    (hCK : ∀ a t p, (∫ y, (∑ m, θ m * h y a m t p) ^ 2 ∂μ) ≤ CK)
+    (hγ : 0 < γ) (hR : 0 ≤ R) (hδ : 0 < δ) (hε : 0 < ε) (hprob : δ + ε < 1)
+    (hlam : 0 < lam) (hsupp : ∀ i ∉ S, θ i = 0)
+    (hA : ConeLowerBound (matrixMap A) S γ) (hcol : ColumnBound (matrixMap A) R)
+    (hsmall : designSamplingBudget M P w D0 CA ≤ δ * γ ^ 2 / 4)
+    (hpen : 2 * (R + γ / 2) * Real.sqrt (residualSamplingBudget P w V0 CK / ε) ≤ lam)
+    (hfit : ∀ z, IsLasso (matrixMap (sampledPairDesign h w z))
+      (WithLp.toLp 2 (b z.1)) lam (θhat z)) :
+    ∃ G : Set (Ω × ((Fin T × Fin P) → OrderedPair N)), MeasurableSet G ∧
+      1 - δ - ε ≤ (μ.prod (independentDraws (Fin T × Fin P) (OrderedPair N))).real G ∧
+      ∀ z ∈ G, SparseCone S (θhat z - WithLp.toLp 2 θ) ∧
+        ‖θhat z - WithLp.toLp 2 θ‖ ^ 2 ≤
+          144 * (S.card : ℝ) * lam ^ 2 / γ ^ 4 := by
+  have hdes := sampledDesign_operator_moments hP hL μ h w A hm hh D0 CA hCA0 hD hCA
+  have hres := sampledResidual_norm_sq_regular hP μ h w b θ hm hh hbm hb
+  have hrv := sampledResidual_second_moment_bound hP hL μ h w b θ hm hh hbm hb V0 CK hCK0 hV hCK
+  simp_rw [sampledResidual_eq_regression] at hres hrv
+  have hv0 : 0 ≤ V0 := (integral_nonneg (fun y => sq_nonneg ‖fullRegressionResidual h w b θ y‖)).trans hV
+  have hv : 0 ≤ residualSamplingBudget P w V0 CK := by unfold residualSamplingBudget; positivity
+  exact lasso_recovery_of_moments
+    (Ω × ((Fin T × Fin P) → OrderedPair N)) inferInstance
+    (μ.prod (independentDraws (Fin T × Fin P) (OrderedPair N))) inferInstance
+    (fun z => matrixMap (sampledPairDesign h w z)) (matrixMap A)
+    (fun z => WithLp.toLp 2 (b z.1)) (WithLp.toLp 2 θ) θhat S
+    γ R δ ε (designSamplingBudget M P w D0 CA) (residualSamplingBudget P w V0 CK) lam
+    hγ hR hδ hε hprob hv hlam hsupp hA hcol hdes.1 hres.1 hdes.2.1 hres.2 hdes.2.2 hrv
+    hsmall hpen hfit
+
 /-- 既知の列を選ぶ。残りの辞書列に下界を要求しない。 -/
 def selectPairFeatures {Ω : Type*} {L M s T N : ℕ}
     (h : Ω → Fin L → Fin M → Fin T → OrderedPair N → ℝ) (e : Fin s → Fin M) :=

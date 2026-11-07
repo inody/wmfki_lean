@@ -82,7 +82,7 @@ flowchart TB
 
   subgraph R[7. ランダムペア回復]
     R0["WeakAssemblyData.oracle_recovery"]:::bridge
-    R1["WeakAssemblyData.lasso_recovery"]:::bridge
+    R1["WeakAssemblyData.lasso_recovery\n/ lasso_recovery_of_minimizer"]:::bridge
     R2["recover_genuine_assembly"]:::bridge
     R3["RecoveryCertificate"]:::result
     R4["exists_particle_weak_recovery"]:::result
@@ -203,7 +203,7 @@ flowchart TB
   → D₀評価 ∧ V₀評価 ∧ RecoveryCertificate
 ```
 
-したがって、`CA`や`CV`は`N`ごとに選ばれていません。また、`D₀`・`V₀`や未知の軌道を原始仮定として受け取る定理ではありません。
+したがって、`CA`や`CV`は`N`ごとに選ばれていません。また、`D₀`・`V₀`や未知の軌道を原始仮定として受け取る定理ではありません。`RecoveryCertificate.lasso_any`は、LASSO最小化条件を点ごとに満たす任意の選択に同じ良事象と係数評価を適用し、その選択自体の可測性は要求しません。
 
 ## 明示的仮定と対象外
 

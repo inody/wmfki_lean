@@ -69,12 +69,14 @@ EXPECTED = {
     "WMFKI.sampledResidual_eq_regression", "WMFKI.sampledResidual_norm_sq_regular",
     "WMFKI.matrix_observation_pythagoras", "WMFKI.sampledDesign_second_moment_identity",
     "WMFKI.sampledDesign_operator_moments", "WMFKI.sampled_moorePenrose_recovery",
-    "WMFKI.sampled_lasso_recovery", "WMFKI.frobenius_select_sq_le",
+    "WMFKI.sampled_lasso_recovery", "WMFKI.sampled_lasso_recovery_of_minimizer",
+    "WMFKI.frobenius_select_sq_le",
     "WMFKI.full_design_selected_second_moment_le", "WMFKI.sampled_oracle_recovery",
     "WMFKI.WeakAssemblyData.radius_nonneg", "WMFKI.WeakAssemblyData.atomBound_nonneg",
     "WMFKI.WeakAssemblyData.kernelBound_nonneg", "WMFKI.WeakAssemblyData.position_moments",
     "WMFKI.WeakAssemblyData.regular", "WMFKI.WeakAssemblyData.selected_direction_bound",
     "WMFKI.WeakAssemblyData.oracle_recovery", "WMFKI.WeakAssemblyData.lasso_recovery",
+    "WMFKI.WeakAssemblyData.lasso_recovery_of_minimizer",
 }
 EXPECTED_EXAMPLES = 26
 EXPECTED_STOCHASTIC_EXAMPLES = 6
@@ -90,6 +92,21 @@ def require(condition, message):
         raise RuntimeError(message)
 
 
+def latex_environment(path, environment, label):
+    text = path.read_text()
+    pattern = re.compile(
+        rf"\\begin\{{{re.escape(environment)}\}}"
+        rf"(?:(?!\\end\{{{re.escape(environment)}\}}).)*?"
+        rf"\\label\{{{re.escape(label)}\}}"
+        rf"(?:(?!\\end\{{{re.escape(environment)}\}}).)*?"
+        rf"\\end\{{{re.escape(environment)}\}}",
+        re.S,
+    )
+    matches = pattern.findall(text)
+    require(len(matches) == 1, f"L4DC statement environment is not unique: {path}: {label}")
+    return matches[0].encode()
+
+
 def run(args, log=None):
     result = subprocess.run(args, cwd=PROJECT, text=True, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, timeout=1800)
@@ -102,7 +119,8 @@ def run(args, log=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--clean", action="store_true", help="このプロジェクトだけ再ビルド")
-    parser.add_argument("--check-paper", action="store_true", help="今回の原稿保護ハッシュを照合")
+    parser.add_argument("--check-paper", action="store_true", help="履歴上のR06原稿保護ハッシュを照合")
+    parser.add_argument("--check-l4dc", action="store_true", help="現行L4DC主定理のstatement lockを照合")
     args = parser.parse_args()
     out = PROJECT / "verification"
     out.mkdir(exist_ok=True)
@@ -198,6 +216,18 @@ def main():
         protected = baseline["protected_sha256"]
         for name, expected in protected.items():
             require(sha(PROJECT.parent.parent / name) == expected, f"原稿の変更を検出: {name}")
+    l4dc_protected = None
+    if args.check_l4dc:
+        lock = json.loads((PROJECT / "l4dc-statement-lock.json").read_text())
+        l4dc_protected = lock["statements"]
+        for record in l4dc_protected:
+            path = (PROJECT / record["path"]).resolve()
+            require(path.is_file(), f"L4DC statement source is missing: {path}")
+            actual = hashlib.sha256(latex_environment(
+                path, record["environment"], record["label"]
+            )).hexdigest()
+            require(actual == record["sha256"],
+                    f"L4DC statement changed: {record['path']}: {record['label']}")
     report = {
         "scope": "有限時間の明示的積確率モデル上で、原始初期乱数・独立Brownian入力から平均場過程と相互作用粒子系を構成し、同期第4モーメント率、実時間特徴核、母集団設計、観測・求積D0、同一実現V0を経て、productionのランダムペア既知support OLSとLASSOへ接続。公開終点はWMFKIJointAssembly.exists_particle_weak_recovery。RMS求積、識別幾何、sampling smallness、確率許容値、penalty条件は明示的仮定。",
         "lean": run([lake, "env", "lean", "--version"]).strip(),
@@ -222,11 +252,13 @@ def main():
         "axiom_dependencies": dependencies,
         "stochastic_axiom_dependencies": stochastic_dependencies,
         "protected_paper_files_checked": len(protected) if protected is not None else None,
+        "protected_l4dc_statements_checked": len(l4dc_protected) if l4dc_protected is not None else None,
         "source_sha256": {str(p.relative_to(PROJECT)): sha(p)
                           for p in sources + stochastic_sources},
         "configuration_sha256": {name: sha(PROJECT / name) for name in
                                   ["lean-toolchain", "lakefile.toml", "lake-manifest.json",
                                    "statement-lock.json", "extension-statement-lock.json",
+                                   "l4dc-statement-lock.json",
                                    "scripts/lake", "scripts/setup.sh", "scripts/verify.py",
                                    "WMFKI_Stochastic/SOURCE_MANIFEST.json",
                                    "WMFKI_Stochastic/THIRD_PARTY.md",
@@ -241,7 +273,8 @@ def main():
                    "独立した別環境・別研究者による再検証ではない"],
     }
     (out / "validation.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
-    print("検証成功：固定仕様不変、563宣言・32例、ビルド成功、一時公理0、sorry 0、標準公理のみ。")
+    print(f"検証成功：固定仕様不変、{len(dependencies) + len(stochastic_dependencies)}宣言・"
+          f"{example_count + stochastic_example_count}例、ビルド成功、一時公理0、sorry 0、標準公理のみ。")
     print("RMS求積・回復幾何・smallness・penalty条件は明示的仮定として残ります。")
 
 
