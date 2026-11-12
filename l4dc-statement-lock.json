@@ -18,7 +18,7 @@
       "path": "../L4DC/body.tex",
       "environment": "theorem",
       "label": "thm:random-pair-recovery",
-      "sha256": "f9b8c64fe76ae9fbb55fa423e3883153f9e1d1c465fdc5eabd440674b0ef84c5"
+      "sha256": "820ed68c18a6ad16a717c7b247172b20e4b10fba62eb2ef5bb195b6d64b97b4e"
     },
     {
       "path": "../L4DC/appendix_theory.tex",
