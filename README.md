@@ -31,223 +31,270 @@ python3 scripts/verify.py --clean
 See [`docs/formalization-map-en.html`](docs/formalization-map-en.html) for a
 one-page overview and
 [`docs/formalization-dependency-en.md`](docs/formalization-dependency-en.md)
-for the theorem-dependency map. The project's own source is licensed under
-the MIT License, with `Copyright (c) 2026 Daisuke Inoue`; see [`LICENSE`](LICENSE).
-Third-party dependencies retain their upstream licenses. The pinned
-stochastic-analysis dependency and its Apache-2.0 license are documented in
-[`WMFKI_Stochastic/THIRD_PARTY.md`](WMFKI_Stochastic/THIRD_PARTY.md).
+for the theorem-dependency map and correspondence with the paper.
 
-## 日本語概要
+## Libraries and verified components
 
-### 現在の結果
+- `Lean_Code/`: matrices, sampling, OLS/LASSO, and the recovery API;
+  128 audited declarations and 26 examples.
+- `WMFKI_Stochastic/`: the connection from particle SDEs to that API;
+  437 audited declarations and 6 examples.
 
-**有限時間の原始粒子入力から、同じ実現上の設計・残差評価を経て、ランダムペア既知support OLSおよびLASSO回復へ接続しました。**
-
-正式な入口は次の定理です。
-
-```lean
-WMFKIJointAssembly.exists_particle_weak_recovery
-```
-
-この定理は、初期乱数と独立Brownian入力から平均場過程と相互作用粒子系を構成し、同期第4モーメント率、実時間特徴核、母集団設計、観測摂動を同じ構成上で扱います。供給されたRMS求積精度を加え、
-
-```text
-D0 ≤ CA (1/N + e + q),
-V0 ≤ CV (σ²/N + e + q)
-```
-
-を導きます。さらに既存の本番APIへ接続し、母集団設計の識別条件、sampling smallness、確率許容値、LASSO penalty条件の下でOLS・LASSOの係数回復証明書を返します。
-
-ここで `e` は原稿の `Δt^(2p)`、`q` は観測誤差の二乗平均予算に対応します。RMS求積精度、識別可能性・restricted-cone geometry、smallness、penalty条件そのものは原稿どおり明示的な仮定です。係数回復をsupport回復とは同一視しません。
-
-実装は二つのライブラリに分かれます。
-
-- `Lean_Code/`：行列、抽出、OLS/LASSOおよび回復API。128宣言・26例。
-- `WMFKI_Stochastic/`：粒子SDEから上記APIまでの接続。新規437宣言・6例。
-
-合計565宣言について推移的な公理依存を監査し、32例を再検証します。プロジェクト固有公理0、`sorry` 0です。
-
-まず全体像をつかむには、次の可視化を参照してください。
-
-- [`docs/formalization-map.html`](docs/formalization-map.html)：概念中心の1ページ地図（日本語）
-- [`docs/formalization-map-en.html`](docs/formalization-map-en.html)：共著者向け英語版
-- [`docs/formalization-dependency.md`](docs/formalization-dependency.md)：主要宣言のMermaid依存グラフと原稿対応表（日本語）
-- [`docs/formalization-dependency-en.md`](docs/formalization-dependency-en.md)：同じ依存グラフと対応表の英語版
-
-## 検証済みの内容
-
-| 項目 | 内容 |
+| Component | Verified scope |
 |---|---|
-| 粒子SDE | 独立初期乱数・Brownian入力から実際の有限粒子解を構成し、同じ原始入力上に平均場コピーを実現 |
-| 平均場方程式 | Picard構成、有限L4経路クラス内の一意性、適合性、有限時間整合性、独立コピー族 |
-| 同期率 | 線形成長Lipschitz核について、各粒子の第4モーメント誤差をC/N²で評価。定数は全Nより先に選択 |
-| 母集団設計 | 実時間積分核の可測性・L2性とFubini条件を証明し、実周辺法則μ_t×μ_tの設計へ同定 |
-| 連続設計D0 | 粒子対コピーの依存安全なL4×L4評価とiidペアP2を結合し、Frobenius二乗誤差O(M/N) |
-| 観測・求積D0 | 偏りと内部依存を許す観測雑音、および供給されたRMS求積予算からCA(1/N+e+q) |
-| 同一実現V0 | 実粒子SDEの弱残差、観測摂動、応答求積を同じX上で結合しCV(σ²/N+e+q) |
-| 本番定義対応 | 連続・離散設計、`fullPairDesign`、`observedWeakResponse`、`fullRegressionResidual`を厳密同定 |
-| 原始回復終点 | 同じY,X,観測系のD0/V0を`WeakAssemblyData`へ渡し、既知support OLSとLASSOへ接続 |
-| 行列とノルム | Euclidean空間への写像、作用素ノルム≤Frobenius、active列制限、転置と随伴、成分ベクトルとのノルム同一性 |
-| 二乗平均の移行 | Frobenius二乗の可積分性から作用素ノルム二乗の可積分性と積分の上界 |
-| Moore–Penrose | 四つの作用素等式、有限次元係数空間での存在、その推定量の最小化性。全列階数は存在の条件にしない |
-| OLS | 残差直交性、予測・係数誤差、摂動、定数4の確率的回復 |
-| LASSOの存在 | 正のペナルティによる目的関数の発散と連続性から最小化解を構成 |
-| LASSOの評価 | 半二乗損失の最小化性から基本不等式、cone包含、定数9の決定論的誤差 |
-| LASSOの回復 | cone・列ノルムの摂動、随伴スコア、定数144の確率的誤差、等号ペナルティ代入の定数576 |
-| 確率評価 | 明示的な可積分性を伴うMarkov、V=0の場合、独立性なしの事象交差 |
-| 条件付き直交性 | E[f\|m]=0とgのm可測性からE‖g−f‖²=E‖g‖²+E‖f‖² |
-| 独立標本の分散 | 時刻ごとのP標本に重みを掛けた分散≤C(Σw²)/P |
-| 一様有向ペア抽出 | 自己対を除くN(N−1)個の母集団、復元抽出の積測度、独立性と平均0を構成から導出 |
-| 観測での条件付け | 任意の観測法と抽出法の積空間で、通常の条件付き期待値を用いて中心化を証明 |
-| デザインの組立 | 中心化誤差が標本行列−全ペア行列に等しいこと、(N−1)/Nと1/√Lの正規化 |
-| ペア誤差 | 特徴の可測性・L2性・二乗平均を入力に、E‖D‖F²≤M C_A Q/P、E‖Dθ‖²≤C_K Q/P |
-| 特徴モーメント | 有界なテスト勾配写像・線形成長する辞書から、観測位置の二乗平均Rを使って3(BGK)²(1+2R)とL2性を導出 |
-| 加法観測 | Y=X+εの二乗平均≤2R_X+2R_ε。平均0や独立性を追加しない |
-| 観測からの組立 | ψ⟨g(Y_i),Φ_m(Y_i−Y_j)⟩と弱応答の有限和を定義し、可測性・L2性を証明 |
-| 辞書の厳密表現 | Σθ_mΦ_m=κから、合成特徴をκの特徴へ同定。係数方向の評価にはκの成長率を使う |
-| 実際の回帰残差 | r̃=r−Dθ、E‖r̃‖²=E‖r‖²+E‖Dθ‖²、全ペア上界VからV+C_K Q/Pへ接続 |
-| 全デザイン誤差 | 参照行列へのFrobenius二乗平均を全ペア誤差と抽出誤差に分解し、作用素ノルムへ評価 |
-| 標本回帰への適用 | 可測性・可積分性を導いてからOLS/LASSOへ適用。標本誤差の上界を別途仮定しない |
-| 既知support | 選択列の誤差を全行列で制御。OLSの下界は選択列だけに課し、辞書全列のinjectivityは不要 |
+| Particle SDEs | Construct finite-particle solutions from independent initial variables and Brownian inputs, with nonlinear copies on the same primitive-input space. |
+| Mean-field equation | Picard construction, uniqueness within the finite-L4 path class, adaptedness, finite-time consistency, and independent nonlinear copies. |
+| Synchronous coupling | Fourth-moment particle error bounded by `C/N^2` for globally Lipschitz, linearly growing kernels; constants are chosen before all particle counts `N`. |
+| Population design | Measurability, L2 bounds, and Fubini conditions for actual time-integrated feature kernels; identification with the design under the actual marginal laws. |
+| Continuous-design budget | Dependence-safe L4-by-L4 coupling bounds and the iid-pair P2 estimate give Frobenius mean-square error `O(M/N)`, where `M` is the dictionary size. |
+| Observed-design budget | Observation noise may be biased and internally dependent; supplied RMS quadrature accuracy gives `CA(1/N + e + q)`. |
+| Joint residual budget | Particle weak residuals, observation perturbations, and response quadrature are evaluated on the same particle system, yielding `CV(sigma^2/N + e + q)`. |
+| Regression definitions | Identify continuous/discrete designs, `fullPairDesign`, `observedWeakResponse`, and `fullRegressionResidual` exactly. |
+| Primitive recovery endpoint | Pass the jointly constructed design/residual budgets to `WeakAssemblyData` and obtain oracle OLS and LASSO recovery certificates. |
+| Matrices and norms | Euclidean-space representation, operator norm bounded by Frobenius norm, active-column restriction, transpose/adjoint identities, and matrix/vector norm agreement. |
+| Moment transfer | Frobenius-square integrability implies operator-norm-square integrability and the corresponding integral bound. |
+| Moore-Penrose inverse | Four operator identities, existence in finite-dimensional coefficient spaces, and least-squares minimization; existence does not require full column rank. |
+| OLS | Residual orthogonality, prediction/coefficient error, perturbation bounds, and probabilistic recovery with constant 4. |
+| LASSO existence | Construct a minimizer from continuity and coercivity for positive penalties. |
+| Deterministic LASSO | Derive the basic inequality, cone inclusion, and coefficient-error bound with constant 9 from the half-squared-loss minimization condition. |
+| Probabilistic LASSO | Cone and column-norm perturbations, adjoint-score control, recovery with constant 144, and the equality-penalty bound with constant 576. |
+| Probability bounds | Markov bounds with explicit integrability, the zero-budget case, and event intersections without independence assumptions. |
+| Conditional orthogonality | Conditional centering and measurability give the second-moment identity for a difference. |
+| Independent sampling variance | Weighted variance for `P` samples at each time is bounded by `C sum(w_n^2)/P`. |
+| Uniform ordered-pair sampling | Construct the off-diagonal population of `N(N-1)` pairs and sampling with replacement; derive independence and centering from the product measure. |
+| Conditioning on observations | Prove centering using ordinary conditional expectation on a product of arbitrary observation and sampling laws. |
+| Sampled-design assembly | Identify the centered error as sampled minus all-pair design, including the `(N-1)/N` and `1/sqrt(L)` factors. |
+| Pair-error moments | From feature measurability, L2 regularity, and second moments, bound the design error by `M C_A Q/P` and its coefficient direction by `C_K Q/P`. |
+| Feature moments | Bounded test-gradient maps and linear growth yield explicit L2 bounds from the observed-position second-moment budget `R`, including `3(BGK)^2(1+2R)`. |
+| Additive observations | Bound the second moment of `Y = X + epsilon` by `2R_X + 2R_epsilon`, without adding centering or independence assumptions. |
+| Observed feature assembly | Define finite-sum weak responses and pair features and prove their measurability and L2 regularity. |
+| Dictionary realizability | Given exact dictionary representation of the true kernel, identify the coefficient combination of dictionary features with its feature; directional bounds use the true kernel's growth rate. |
+| Actual sampled residual | Prove `r_sampled = r_full - D theta` and the orthogonal second-moment decomposition, adding the pair budget to the full-pair residual budget. |
+| Total design error | Decompose the Frobenius mean-square error into all-pair and sampling contributions, then bound the operator error. |
+| Recovery application | Derive measurability and integrability before applying the OLS/LASSO results; do not separately assume the sampled-error estimates. |
+| Known support | Control selected-column error using the full design; the OLS lower bound is required only on active columns, not the entire dictionary. |
 
-観測を固定した抽出列の独立性を証明しており、観測を平均化した後の特徴の独立性は仮定しません。
-全行・原子で抽出列を共有し、係数方向には合成特徴の二乗平均を使うため、不要な係数ノルムを追加しません。
-`WMFKI_Stochastic/`では、勾配・Laplacian・時間微分を本物のFrechet微分として同定し、粒子モデルから位置モーメントと連続全ペアD0/V0を供給します。
-任意の既存joint realizationへの普遍移送は行わず、原始入力を明示的な積空間上で構成します。
+Sampling independence is proved conditional on the observations. Independence
+of the features after averaging over observations is not assumed. All rows and
+atoms share the same sampling sequence; coefficient-direction bounds use the
+combined feature's second moment rather than introducing an unnecessary
+coefficient-norm factor.
 
-### 接続後の全体像
+The stochastic layer identifies gradients, Laplacians, and temporal derivatives
+with genuine Frechet derivatives. It constructs the primitive inputs on an
+explicit product probability space; it does not transfer the result to every
+pre-existing joint realization.
 
-```text
-原始初期乱数 + 独立Brownian入力
-   ↓ Picard構成・実粒子SDE・同期結合
-平均場Yと相互作用粒子X、同期第4モーメント率 C/N²
-   ↓ 実時間特徴核・Fubini・iidペアP2
-母集団設計A∞と連続設計誤差 O(1/N)
-   ↓ 観測摂動 + 供給された同じX上のRMS求積誤差
-D0 ≤ CA(1/N+e+q),  V0 ≤ CV(σ²/N+e+q)
-   ↓ 一様有向ペア抽出、条件付き中心化
-D = D0 + M C_A Q/P,  V = V0 + C_K Q/P
-   ↓ 識別性・smallness・確率・penalty条件
-既知support OLS回復 ／ 生デザインLASSO回復
-```
+## From particle inputs to recovery
 
-`WMFKIJointAssembly.exists_particle_weak_recovery`が原始入力側の入口です。
-`WMFKI.WeakAssemblyData.oracle_recovery`と`lasso_recovery`が回復側の既存APIです。`lasso_recovery_of_minimizer`と`RecoveryCertificate.lasso_any`は、構成済みの一つの解だけでなく、点ごとにLASSO最小化条件を満たす任意の選択へ同じ回復評価を適用します。
-D0は**Frobenius二乗平均上界**として実際に導きます。作用素ノルム上界からFrobenius上界を逆向きに推論していません。
-
-### 回復評価の意味
-
-OLSは、実際の残差y−Bθ*とデザイン誤差について
+Write `D0` and `V0` for the full-pair design and residual mean-square budgets.
+Here `e` corresponds to the paper's `Delta t^(2p)` quadrature budget, and `q`
+to the observation-error second-moment budget. The construction gives
 
 ```text
-E ‖B−A∞‖op² ≤ D,  E ‖y−Bθ*‖² ≤ V,
-∀u, γ‖u‖ ≤ ‖A∞u‖,  D ≤ δγ²/4
-    ↓
-確率1−δ−ε以上の可測な事象上で
-‖θhat−θ*‖² ≤ 4V/(εγ²)
+primitive initial variables + independent Brownian inputs
+  -> mean-field and interacting particle systems, synchronous coupling
+  -> fourth-moment rate C/N^2, time-integrated features, population design
+  -> D0 <= CA(1/N + e + q), V0 <= CV(sigma^2/N + e + q)
+  -> uniform ordered-pair sampling and conditional centering
+  -> D = D0 + M C_A Q/P, V = V0 + C_K Q/P
+  -> oracle OLS and raw-design LASSO coefficient recovery
 ```
 
-LASSOは、同様の二乗平均条件に加え、真のsupportを含むS、cone上の下界γ、
-列ノルム上界R、正のペナルティ
-`λ ≥ 2(R+γ/2) sqrt(V/ε)` の下で
+In the sampling step, `P` is the pair count, `Q` is the sum of squared
+quadrature weights, and `C_A` and `C_K` are the corresponding feature-moment
+constants. The design budget is derived in Frobenius mean square; a Frobenius
+bound is not inferred in the reverse direction from an operator-norm bound.
+
+The primitive-input endpoint is
+`WMFKIJointAssembly.exists_particle_weak_recovery`. Its recovery-side APIs are
+`WMFKI.WeakAssemblyData.oracle_recovery` and `lasso_recovery`.
+`lasso_recovery_of_minimizer` and `RecoveryCertificate.lasso_any` also cover
+any pointwise choice satisfying the LASSO minimization condition, not only the
+particular minimizer constructed by the library.
+
+### Meaning of the recovery bounds
+
+For oracle OLS, let `B` and `A_inf` denote the design and population reference
+restricted to the known active columns, `y` the response, and `theta_star`
+the true active coefficients. With mean-square upper bounds `D,V`, stability
+constant `gamma > 0`, and confidence parameters `0 < delta, epsilon` satisfying
+`delta + epsilon < 1`, the conditions take the form
 
 ```text
-確率1−δ−ε以上の可測な事象上で
-θhat−θ* ∈ cone(S),  ‖θhat−θ*‖² ≤ 144 |S| λ²/γ⁴
+E ||B - A_inf||_op^2 <= D, E ||y - B theta_star||^2 <= V,
+for all u: gamma ||u|| <= ||A_inf u||, D <= delta gamma^2/4.
 ```
 
-を証明しています。λを下限と等しくした右辺は
-`576 |S| (R+γ/2)² V/(εγ⁴)` に一致します。
-この代入はλ>0という元の条件を取り除くものではありません。
+It obtains a measurable event of probability at least `1 - delta - epsilon`
+on which
 
-デザインと残差の独立性は仮定していません。
-`EstimatorRecovery.lean`では推定量の存在も利用し、最小化性を別の入力仮定にせず回復定理へ接続しています。
-ただし、選択した推定量自体の可測性と数値ソルバーの正当性は未検証です。
-結論は可測な良事象を明示する形なので、その可測性を暗黙に使ってはいません。
+```text
+||theta_hat - theta_star||^2 <= 4V/(epsilon gamma^2).
+```
 
-## 公理監査と検証限界
+For LASSO, use the full design and let `S` contain the true support. Under the
+corresponding cone lower bound, column-norm bound `R`, moment and smallness
+conditions, and a positive
+penalty satisfying `lambda >= 2(R + gamma/2) sqrt(V/epsilon)`, a measurable
+event of probability at least `1 - delta - epsilon` satisfies
 
-- 初期OLS骨組みの一時公理は5→4→1→0個。今回追加した行列・LASSOの仮置き宣言も全て証明へ置換済み。
-- 現在は**プロジェクトの一時公理0、sorry 0**。
-- Lean回復層128宣言と確率解析層437宣言、合計**565宣言**の推移的な依存は、Leanの標準公理 `propext`、`Classical.choice`、`Quot.sound` のみ。
-- 既存26例と新規6例、合計32例を検査。新規例では、本物の三階Frechet微分、compact bump、偏りと完全依存を持つ観測雑音、非零選択support残差、原始Brownian終点を確認。
-- OLSの定義・Showcaseと、追加したLASSO仕様は証明開始時のハッシュから不変。
+```text
+theta_hat - theta_star belongs to cone(S),
+||theta_hat - theta_star||^2 <= 144 |S| lambda^2/gamma^4.
+```
 
-**公理0は、数値ソルバーや任意の既存確率空間への移送まで検証したという意味ではありません。**
-RMS求積精度、識別可能性・restricted-cone geometry、sampling smallness、確率許容値、LASSO penalty条件は定理の明示的な仮定です。選択した推定量の可測性、数値アルゴリズムの正当性、任意の既存joint realizationへの移送、無限時間一様率は対象外です。
-検証範囲と外部依存は `WMFKI_Stochastic/README.md` と `WMFKI_Stochastic/THIRD_PARTY.md` に記録しています。
+Substituting equality in the penalty lower bound gives
+`576 |S| (R + gamma/2)^2 V/(epsilon gamma^4)`. This substitution does not
+remove the requirement `lambda > 0`.
 
-## 再実行
+The design and residual need not be independent. `EstimatorRecovery.lean`
+uses existence of the estimators, rather than taking their minimization
+conditions as separate assumptions for the constructed choices. Measurability
+of a selected estimator and correctness of a numerical solver are not proved.
+The statements explicitly exhibit measurable good events and do not silently
+rely on estimator measurability.
 
-このディレクトリで実行します。
+## Axiom audit and scope limits
+
+All 565 audited declarations have transitive axiom dependencies contained in
+`propext`, `Classical.choice`, and `Quot.sound`. There are no project-specific
+axioms or `sorry`. The fixed OLS definitions, `Showcase`, and LASSO
+specifications retain their protected hashes.
+
+The 32 examples include genuine third-order Frechet derivatives, compact
+bumps, biased and fully dependent observation noise, a nonzero selected-support
+residual, and the primitive Brownian recovery endpoint.
+
+The following remain explicit assumptions or outside the verified scope:
+
+- **RMS quadrature accuracy** is supplied for the same actual particle system;
+  it is not derived from temporal regularity alone.
+- **Exact representation of the true kernel by the dictionary** is an input
+  assumption.
+- **Identifiability and restricted-cone geometry, sampling smallness,
+  probability tolerances, and LASSO penalty conditions** remain assumptions
+  at recovery application time.
+- **Support recovery**, correctness of numerical algorithms, and measurability
+  of a selected estimator are not formalized.
+- **Universal transfer to an arbitrary pre-existing joint realization** and
+  uniform-in-time rates are not formalized.
+- Additional adaptedness of nonlinear copies to the enlarged particle
+  filtration is not formalized; it is not needed for the finite-time ordinary
+  integral estimates used here.
+- Mathlib uses its official compiled cache rather than a full source rebuild.
+  The required transitive stochastic-analysis modules are built from the pinned
+  dependency. Upstream linter warnings are recorded separately from the zero
+  project-source warning count.
+- Verification has not been independently repeated by another researcher in a
+  separate environment.
+
+See [`WMFKI_Stochastic/README.md`](WMFKI_Stochastic/README.md) and
+[`WMFKI_Stochastic/THIRD_PARTY.md`](WMFKI_Stochastic/THIRD_PARTY.md) for the
+stochastic layer's scope and provenance.
+
+## Reproducing verification
+
+Run the setup and verification commands above from this directory.
+
+- Lean **4.34.1** and Mathlib **v4.34.1**, pinned to
+  `d13f23b723b8a846827a245b89c10fc7d3f11612`.
+- `stochasticAnalysis`, pinned to `0cb33378176178d269f53a4dada439f8ecd3bf5e`,
+  under Apache-2.0.
+- elan **4.2.4**, installed in the dedicated `~/.cache/wmfki-lean/` cache.
+- `.lake` is a symlink to that external cache; dependencies and build artifacts
+  remain outside the repository. Shell configuration and existing Lean
+  environments are not modified.
+- Set `WMFKI_LEAN_CACHE` to choose another cache location. Setup refuses to
+  overwrite an existing `.lake` that points elsewhere.
+- The initial setup requires network access and at least several GB of free
+  space; tens of GB are recommended for the Mathlib and stochastic-analysis
+  build caches.
+
+**Do not run bare `lake clean`.** The verifier uses
+`lake clean wmfki_formalization` to rebuild only this project's targets.
+Individual checks are available through
 
 ```bash
-./scripts/setup.sh
-python3 scripts/verify.py --clean
+./scripts/lake env lean Lean_Code/Human_Check.lean
+./scripts/lake env lean WMFKI_Stochastic/Audit.lean
 ```
 
-今回の作業前の原稿も保護検査する場合は次を使います。
-後日原稿を変更した場合に、この検査が失敗するのは意図した挙動です。
+The optional historical R06 manuscript-protection check is
 
 ```bash
 python3 scripts/verify.py --clean --check-paper
 ```
 
-現行L4DC主定理、標本LASSO定義、誤差スケール、pair-sampling仮定のstatement lockを照合する場合は、論文リポジトリ内の配置で次を実行します。
+This compares historical protected hashes and is expected to fail if those
+manuscript sources have subsequently changed. To check the current L4DC theorem,
+sampled LASSO definition, residual scale, and pair-sampling assumption, place
+this checkout in the paper repository's `lean/` directory alongside `L4DC/`
+and run
 
 ```bash
 python3 scripts/verify.py --clean --check-l4dc
 ```
 
-`--check-paper`は履歴上のR06保護ハッシュ、`--check-l4dc`は現行L4DCの抽出済みstatement環境を検査します。
+`--check-paper` protects the historical R06 snapshot; `--check-l4dc` checks the
+extracted environments recorded in `l4dc-statement-lock.json`.
 
-- Lean **4.34.1**、Mathlib **v4.34.1**、commit `d13f23b723b8a846827a245b89c10fc7d3f11612`。
-- 確率解析基盤 `stochasticAnalysis` はcommit `0cb33378176178d269f53a4dada439f8ecd3bf5e`、Apache-2.0で固定。
-- elan **4.2.4**、専用環境 `~/.cache/wmfki-lean/`。Mathlibと確率解析依存のビルドキャッシュには数十GBの空き容量を推奨。
-- `.lake`は外部キャッシュへのシンボリックリンク。依存・ビルド成果物はリポジトリ外。
-- シェル設定・既存のLean環境は変更しません。
-- `WMFKI_LEAN_CACHE`で保存先を変更できます。既存`.lake`が別の場所を指す場合は上書きしません。
-- 初回にはネット接続と数GB以上の空き容量が必要です。
+## Source guide
 
-**引数なしの `lake clean` は使わないでください。** 検証スクリプトは
-`lake clean wmfki_formalization`で自作プロジェクトだけを再ビルドします。
-単体確認は `./scripts/lake env lean Lean_Code/Human_Check.lean` と
-`./scripts/lake env lean WMFKI_Stochastic/Audit.lean`。
-Mathlibは公式のコンパイル済みキャッシュを使用しています。
-別環境・別研究者による独立再検証は行っていません。
+- `docs/formalization-map-en.html` and `docs/formalization-dependency-en.md`:
+  English concept map, Mermaid dependency graph, and paper correspondence.
+  The [Japanese map](docs/formalization-map.html) and
+  [Japanese dependency guide](docs/formalization-dependency.md) remain available.
+- `Blueprint.md` and `EXTENSION_PLAN.md`: design and dependencies.
+- `Lean_Code/Definitions.lean` and `LassoDefinitions.lean`: fixed definitions
+  and conditional theorem statements.
+- `Showcase.lean`: the unchanged original OLS specification endpoint.
+- `Lean_Code/MatrixBridge.lean` and `MatrixMoments.lean`: matrix/norm bridges.
+- `Lean_Code/MoorePenrose*.lean`: pseudoinverse existence and minimization.
+- `Lean_Code/Lasso*.lean`: existence, geometry, and deterministic/probabilistic
+  LASSO bounds.
+- `Lean_Code/EstimatorRecovery.lean`: recovery for the constructed estimators.
+- `Lean_Code/ConditionalOrthogonality.lean` and `SamplingVariance.lean`:
+  conditional orthogonality and sampling-variance results.
+- `Lean_Code/FiniteSampling.lean` and `PairSampling.lean`: uniform finite
+  populations and ordered-pair sampling.
+- `Lean_Code/SamplingConditional.lean`, `SamplingIntegrability.lean`, and
+  `SamplingMoments.lean`: the observation/sampling product space.
+- `Lean_Code/PairDesignMoments.lean` and `PairAssembly.lean`: shared-sampling
+  matrix/directional bounds and exact assembly identities.
+- `Lean_Code/FeatureMoments.lean`, `ObservationMoments.lean`, and
+  `ObservedFeatures.lean`: feature growth, additive observations, and assembly.
+- `Lean_Code/ResidualOrthogonality.lean` and `SampledResidual.lean`: conditional
+  orthogonality for the actual regression residual.
+- `Lean_Code/WeakPairMoments.lean`: combine weak responses, position moments,
+  and full-pair residual bounds.
+- `Lean_Code/SamplingRegularity.lean`: measurability and squared-norm
+  integrability of matrices and residuals.
+- `Lean_Code/DesignComposition.lean`: Frobenius-error addition and operator
+  bounds.
+- `Lean_Code/PairRecovery.lean` and `WeakPairRecovery.lean`: apply recovery to
+  raw pair features and the observed regression, including known-support OLS.
+- `Lean_Code/Human_Check.lean` and `AXIOM_STATUS.md`: examples and proof ledger.
+- `WMFKI_Stochastic/PrimitiveRecovery.lean`: the primitive-input endpoint.
+- `WMFKI_Stochastic/RecoveryCertificate.lean`: application conditions and
+  conclusions for oracle OLS and constructed or arbitrary LASSO minimizers.
+- `WMFKI_Stochastic/HumanCheckJointRecovery.lean` and `Audit.lean`: six examples
+  and the audit of 437 declarations.
+- `WMFKI_Stochastic/SOURCE_MANIFEST.json` and `THIRD_PARTY.md`: source origins,
+  hashes, dependencies, and licensing.
+- `statement-lock.json` and `extension-statement-lock.json`: fixed Lean
+  specification hashes.
+- `l4dc-statement-lock.json`: current L4DC theorem/prerequisite hashes.
+- `verification/validation.json`, `build.log`, and `axioms.log`: verification
+  evidence.
 
-## ファイル案内
+The `docs/` directory contains formalization maps and dependency material.
+Manuscript sources, input materials, and build caches are not included here.
 
-- `docs/formalization-map.html`、`docs/formalization-map-en.html`：粒子入力からOLS/LASSOまでの日本語・英語概念図。
-- `docs/formalization-dependency.md`、`docs/formalization-dependency-en.md`：主要宣言のMermaid依存グラフと原稿対応表。
-- `Blueprint.md`、`EXTENSION_PLAN.md`：設計と依存関係。
-- `Lean_Code/Definitions.lean`、`LassoDefinitions.lean`：固定した定義と仮定付き定理文。
-- `Showcase.lean`：初期OLS仕様の公開入口。変更していません。
-- `Lean_Code/MatrixBridge.lean`、`MatrixMoments.lean`：行列とノルムの接続。
-- `Lean_Code/MoorePenrose*.lean`：擬似逆の存在と最小化性。
-- `Lean_Code/Lasso*.lean`：LASSOの存在、幾何、決定論的・確率的評価。
-- `Lean_Code/EstimatorRecovery.lean`：構成した両推定量への回復定理の適用。
-- `Lean_Code/ConditionalOrthogonality.lean`、`SamplingVariance.lean`：確率解析の追加補題。
-- `Lean_Code/FiniteSampling.lean`、`PairSampling.lean`：一様母集団と具体的な有向ペア抽出。
-- `Lean_Code/SamplingConditional.lean`、`SamplingIntegrability.lean`、`SamplingMoments.lean`：観測と抽出の積空間。
-- `Lean_Code/PairDesignMoments.lean`、`PairAssembly.lean`：共有抽出の行列・係数方向評価、実際の組立式との一致。
-- `Lean_Code/FeatureMoments.lean`：有界な勾配写像・線形成長と、観測位置の二乗平均からの特徴評価。
-- `Lean_Code/ObservationMoments.lean`、`ObservedFeatures.lean`：加法観測から特徴・デザイン・係数方向の二乗平均へ接続。
-- `Lean_Code/ResidualOrthogonality.lean`、`SampledResidual.lean`：実際の回帰残差への条件付き直交性の適用。
-- `Lean_Code/WeakPairMoments.lean`：弱応答の有限和と、位置モーメント・全ペア残差上界を入力とする結合定理。
-- `Lean_Code/SamplingRegularity.lean`：行列・残差の可測性と二乗ノルムの可積分性。
-- `Lean_Code/DesignComposition.lean`：全ペア・抽出誤差のFrobenius加法性と作用素評価。
-- `Lean_Code/PairRecovery.lean`：生のペア特徴からOLS/LASSOへ適用し、既知supportの列選択も処理。
-- `Lean_Code/WeakPairRecovery.lean`：観測・テストから組み立てた行列・応答を両回復定理へ渡す結合定理。
-- `Lean_Code/Human_Check.lean`：例題と公理監査。
-- `Lean_Code/AXIOM_STATUS.md`：証明台帳。
-- `WMFKI_Stochastic/PrimitiveRecovery.lean`：原始粒子入力から回復証明書を返す公開終点。
-- `WMFKI_Stochastic/RecoveryCertificate.lean`：既知support OLSと、構成した解および任意のLASSO最小化解に対する明示的な適用条件と結論。
-- `WMFKI_Stochastic/HumanCheckJointRecovery.lean`：新規6例。
-- `WMFKI_Stochastic/Audit.lean`：採用した437宣言の公理監査。
-- `WMFKI_Stochastic/SOURCE_MANIFEST.json`、`THIRD_PARTY.md`：ソース由来・hash・外部依存・ライセンス。
-- `statement-lock.json`、`extension-statement-lock.json`：Lean固定仕様のハッシュ。
-- `l4dc-statement-lock.json`：現行L4DC主定理と直接の標本回帰前提を環境単位で固定するハッシュ。
-- `verification/validation.json`、`build.log`、`axioms.log`：再検証結果。
+## License
 
-公開用の `docs/` には形式化マップと依存関係資料のみを収録します。原稿本体、入力資料、ビルドキャッシュはこのリポジトリに含めません。
+The project's own source is licensed under the MIT License, with
+`Copyright (c) 2026 Daisuke Inoue`; see [`LICENSE`](LICENSE). Third-party
+dependencies retain their upstream licenses. The pinned stochastic-analysis
+dependency and its Apache-2.0 license are documented in
+[`WMFKI_Stochastic/THIRD_PARTY.md`](WMFKI_Stochastic/THIRD_PARTY.md).
