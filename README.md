@@ -31,9 +31,10 @@ python3 scripts/verify.py --clean
 See [`docs/formalization-map-en.html`](docs/formalization-map-en.html) for a
 one-page overview and
 [`docs/formalization-dependency-en.md`](docs/formalization-dependency-en.md)
-for the theorem-dependency map. The project-level source has no selected
-license; the pinned third-party stochastic-analysis dependency and its
-Apache-2.0 license are documented in
+for the theorem-dependency map. The project's own source is licensed under
+the MIT License, with `Copyright (c) 2026 Daisuke Inoue`; see [`LICENSE`](LICENSE).
+Third-party dependencies retain their upstream licenses. The pinned
+stochastic-analysis dependency and its Apache-2.0 license are documented in
 [`WMFKI_Stochastic/THIRD_PARTY.md`](WMFKI_Stochastic/THIRD_PARTY.md).
 
 ## 日本語概要

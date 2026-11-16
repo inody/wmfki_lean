@@ -13,7 +13,7 @@
   "stochastic_checked_example_count": 6,
   "checked_example_count": 32,
   "adopted_module_count": 116,
-  "clean_project_rebuild": false,
+  "clean_project_rebuild": true,
   "build_passed": true,
   "project_warning_count": 0,
   "external_dependency_warning_count": 936,
@@ -2841,7 +2841,7 @@
     "WMFKIPopulationDesign.arrayInput": []
   },
   "protected_paper_files_checked": null,
-  "protected_l4dc_statements_checked": null,
+  "protected_l4dc_statements_checked": 4,
   "source_sha256": {
     "Lean_Code/ConditionalOrthogonality.lean": "502b155fcee03a272941b911212c169033e99b235a660f0eafa431b9430b0b2f",
     "Lean_Code/Definitions.lean": "999d8f25d2c199c4ce89179fd36b6106b6fc28b5ea510b1b907a4798704bac17",
@@ -3006,7 +3006,7 @@
     "lake-manifest.json": "71a22bf346960fa8eee0e0f3ba626d0a9960249245bba67d4801c3fcb29bf4c1",
     "statement-lock.json": "19a6ac70b37067d2266e1843297e60ac3ba398fdb0bb1ae4076d4c72aa93a158",
     "extension-statement-lock.json": "850dd2bf09561d9151e7b92e088e015cd5496f849d77cdfedab07bb869e1808f",
-    "l4dc-statement-lock.json": "dc7914c3a146f025aa2a8a1d42bfdd2944c9d1807cfc31af0853a99305a4ee5c",
+    "l4dc-statement-lock.json": "e76210f9d3ed70727e6d44ce0438be1e6e22e502e88aeb49a5e6ee7280b8e2e7",
     "scripts/lake": "7763c01631613a515a2ec0c748417f8c32c38ed5b975a54f33d50f5d5a4dfec7",
     "scripts/setup.sh": "25e36d5c8a6a71d3eb15d5766289f0d034e87ae64ac2a808c05c55fc03cc7db2",
     "scripts/verify.py": "38efb727a9a2b722c057e31c7b7e62043fb83809fc43380423256394b6ecf959",
