@@ -1,8 +1,9 @@
 # WMFKI Lean Formalization
 
-This repository contains the Lean 4 formalization accompanying *Mesh-Free
-Weak-Form Regression for Learning Interaction Kernels from Particle
-Trajectories*. Its main public endpoint is
+This repository contains the Lean 4 formalization accompanying
+*[Mesh-Free Weak-Form Regression for Learning Interaction Kernels from Particle
+Trajectories](https://arxiv.org/abs/2611.18455)*.
+Its main public endpoint is
 
 ```lean
 WMFKIJointAssembly.exists_particle_weak_recovery
